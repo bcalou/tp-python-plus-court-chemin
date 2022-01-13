@@ -59,7 +59,7 @@ print(City.BORDEAUX.name)
 
 Créez un fichier `pathfinder/graph.py`.
 
-En utilisant l'énumération `City` que vous avez créée, stockez dans une variable `graph` la **liste d'adjacence** du graphe dont l'image est présentée plus haut.
+En utilisant l'énumération `City` que vous avez créée, stockez dans une variable `graph` la **liste d'adjacences** du graphe dont l'image est présentée plus haut.
 
 Pour vous aider, voici à quoi devrait ressembler le début du graph :
 
@@ -132,13 +132,13 @@ _Conseil bis : pourquoi ne pas commencer par un circuit plus simple, comme Borde
 
 Si vous avez correctement nommé vos fichiers et classes, le fichier `test_dijkstra.py` à la racine peut être exécuté pour tester le bon fonctionnement de votre classe.
 
+**Attention : la bon fonctionnement des tests est requis pour valider le TP**.
+
 #### Analyse
 
 Combien de calculs de distance avez-vous effectué pour parvenir au résultat Bordeaux -> Strasbourg ?
 
 Autrement dit, combien de fois avez vous mis à jour la distance pour un point du graphe ?
-
-**Attention : la bon fonctionnement des tests est requis pour valider le TP**.
 
 ## Partie 2 : Amélioration avec l'algorithme A* (a-star)
 
@@ -152,7 +152,7 @@ Pour cela, l'algorithme A* (a star) propose d'associer une valeur heuristique à
 
 Pour calculer ces valeurs en vert, nous avons pris la distance à vol d'oiseau entre le sommet concerné et Strasbourg, ville d'arrivée dans notre problème.
 
-La valeur est le temps qu'il faudrait à un cycliste pédalant à 16km/h pour parcourir cette distance. Elle est inférieur à la distance que le cycliste va réellement parcourir, puisqu'on ne roule pas en ligne droite. Mais c'est une **approximation** suffisante pour améliorer notre algorithme.
+La valeur est le temps qu'il faudrait à un cycliste pédalant à 16km/h pour parcourir cette distance. Elle est inférieure à la distance que le cycliste va réellement parcourir, puisqu'on ne roule pas en ligne droite. Mais c'est une **approximation** suffisante pour améliorer notre algorithme.
 
 ### 2.a Résolution
 
@@ -214,7 +214,7 @@ Jouez les tests du fichier `test_astar.py`.
 
 #### Analyse
 
-Combien de calcul de distance ont été nécessaire pour calculer la solution du trajet Bordeaux -> Strasbourg.
+Combien de calculs de distance ont été nécessaires pour calculer la solution du trajet Bordeaux -> Strasbourg ?
 
 Que pensez-vous de la solution obtenue, comparée à l'algorithme de Dijsktra ?
 
@@ -230,7 +230,7 @@ Les covoiturages proposés sont représentés par des flèches sur le graphe ci-
 
 En rouge est présenté le prix à payer pour chaque covoiturage.
 
-Mais il y a aussi des valeurs en vert : des gens très seuls et très riches, qui sont prêt à vous payer pour que vous leur teniez compagnie. **Attention** : ces valeurs sont négatives. L'objectif reste ainsi de trouver le chemin avec la valeur la plus faible (celui ou vous dépensez le moins d'argent, donc).
+Mais il y a aussi des valeurs en vert : des gens très seuls et très riches, qui sont prêt à vous payer pour que vous leur teniez compagnie. **Attention** : ces valeurs sont négatives, c'est de l'argent que vous **recevez**. L'objectif reste ainsi de trouver le chemin avec la valeur la plus faible (celui ou vous dépensez le moins d'argent, donc).
 
 ### 3.a Résolution manuelle
 
@@ -242,9 +242,9 @@ Utilisez l'algorithme de Dijkstra pour résoudre le problème. Qu'observez-vous 
 
 ### 3.c Algorithme SPFA
 
-L'algorithme SPFA (*Shortest Path Faster Algorithm*, nom peu inspiré), est une variation de l'algorithme de Bellman-Ford, que nous ne verrons pas ici.
+L'algorithme SPFA (*Shortest Path Faster Algorithm*, nom peu inspiré), est une variation de l'algorithme de Bellman-Ford, que nous ne verrons pas ici mais qui est très répandu.
 
-Il permet de trouver le meilleur chemin dans un graphe dont les arcs peuvent être de poids négatif, à condition qu'il n'y ait pas de **circuit absorbant**, c'est à dire de circuit "magique" qui permette de tendre vers moins l'infini. Vous pouvez le vérifier sur la carte, il n'y a pas d'astuce pour se faire de l'argent à l'infini.
+SPFA permet de trouver le meilleur chemin dans un graphe dont les arcs peuvent être de poids négatif, à condition qu'il n'y ait pas de **circuit absorbant**, c'est à dire de circuit "magique" qui permette de tendre vers moins l'infini. Vous pouvez le vérifier sur la carte, il n'y a pas d'astuce pour se faire de l'argent à l'infini.
 
 Utilisez l'algorithme à la main (papier ou document texte) pour résoudre le trajet Bordeaux -> Strasbourg. Comparez à votre première résolution.
 
