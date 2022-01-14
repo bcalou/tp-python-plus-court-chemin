@@ -17,6 +17,7 @@ Toujours à la recherche de nouveaux exploits à accomplir, vous décidez de par
 ### 1.a Résolution manuelle
 
 Commencez par trouver ce qui vous semble être le plus court chemin sans technique particulière. Notez votre réponse.
+    Bordeaux -> Orleans -> Paris -> Strasbourg
 
 ### 1.b Algorithme de Dijkstra
 
