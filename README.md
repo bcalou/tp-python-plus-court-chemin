@@ -140,6 +140,8 @@ Combien de calculs de distance avez-vous effectué pour parvenir au résultat Bo
 
 Autrement dit, combien de fois avez vous mis à jour la distance pour un point du graphe ?
 
+13 fois (je ne visite pas les villes qui ont déjà un chemin avec une distance supérieur à l'arrivée)
+
 ## Partie 2 : Amélioration avec l'algorithme A* (a-star)
 
 Dijkstra garantit la meilleure solution possible. Mais vous avez sans doute remarqué qu'il s'aventure dans des recoins peu pertinents d'un point de vue "intelligent" (par exemple, tester Rouen dans un trajet Bordeaux -> Strasbourg...).
@@ -218,6 +220,10 @@ Combien de calculs de distance ont été nécessaires pour calculer la solution 
 
 Que pensez-vous de la solution obtenue, comparée à l'algorithme de Dijsktra ?
 
+3, c'est pas mal efficace
+Par contre il passe par Dijon à la place de Paris, ce qui est un peu sous-optimal
+Mais 3 c'est solide quoi
+
 ## Partie 3 : Variation avec SPFA (Shortest Path Faster Algorithm)
 
 L'algorithme du plus court chemin pourrait en réalité s'appeler l'algorithme du chemin optimal, car on ne calcule pas toujours des distances.
@@ -239,6 +245,8 @@ Saurez-vous trouver le meilleur trajet de tête ? Probablement.
 ### 3.b Est-ce que Dijkstra fonctionne ?
 
 Utilisez l'algorithme de Dijkstra pour résoudre le problème. Qu'observez-vous ?
+
+C'est pas le meilleur chemin
 
 ### 3.c Algorithme SPFA
 
