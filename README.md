@@ -160,6 +160,7 @@ La valeur est le temps qu'il faudrait à un cycliste pédalant à 16km/h pour pa
 ### 2.a Résolution
 
 En utilisant ces heuristiques, résolvez "manuellement" (sur une feuille ou un document texte) le trajet Bordeaux -> Strasbourg.
+Bordeaux -> Orléans -> Dijon -> Strasbourg
 
 **Important** : l'algorithme s'arrête dès qu'une solution est trouvée. Ce n'est pas nécessairement la meilleure, mais *souvent* l'une des meilleures.
 

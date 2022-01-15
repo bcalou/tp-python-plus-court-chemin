@@ -56,14 +56,24 @@ class PathFinder:
     def __init__(self, graph):
         self.graph = graph
 
+    def sort_by_range(self, tab: list[City]) -> list[City]:
+        for i in range(1, len(tab)):
+            start_value = cities[tab[i]]["distance"]
+            start_city = tab[i]
+            current_index = i - 1
+
+            while current_index >= 0 and start_value < cities[tab[current_index]]["distance"]:
+                tab[current_index + 1] = tab[current_index]
+                current_index -= 1
+            tab[current_index + 1] = start_city
+
+        return tab
+
     def get_neighbor_range(self, ville: City, tab: list[City]):
         for voisin in graph[ville]:
-            # print("v : ", voisin)
             distance = graph[ville][voisin] + cities[ville]["distance"]
             if distance < cities[voisin]["distance"]:
-                # print("n : ", distance)
                 if voisin not in tab:
-                    # print("r: ", voisin)
                     tab.append(voisin)
                 cities[voisin]["distance"] = distance 
                 cities[voisin]["from"] = ville
@@ -84,9 +94,8 @@ class PathFinder:
             else:
                 if city == start:
                     cities[start]["distance"] = 0
-                nom_ville = city.value
-                # print(nom_ville)
                 cities_to_visit = self.get_neighbor_range(city, cities_to_visit)
+                cities_to_visit = self.sort_by_range(cities_to_visit)
                 cities_not_to_visit.append(city)
 
         neighbor_city: City = end
