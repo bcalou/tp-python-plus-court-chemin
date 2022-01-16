@@ -1,6 +1,6 @@
 from typing import TypedDict
 
-from city import *
+from pathfinder.city import *
 
 
 class Path(TypedDict):

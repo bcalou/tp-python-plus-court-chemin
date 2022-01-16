@@ -1,5 +1,5 @@
-from pathfinder.city import City
 from pathfinder.astar import AStar
+from pathfinder.city import City
 from pathfinder.graph import graph
 from pathfinder.heuristics import heuristics
 
