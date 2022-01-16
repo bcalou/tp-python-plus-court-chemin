@@ -139,6 +139,7 @@ Si vous avez correctement nommé vos fichiers et classes, le fichier `test_dijks
 Combien de calculs de distance avez-vous effectué pour parvenir au résultat Bordeaux -> Strasbourg ?
 
 Autrement dit, combien de fois avez vous mis à jour la distance pour un point du graphe ?
+Il faut mettre à jour la distance 12 fois (13 si on compte le départ qui est à distance 0)
 
 ## Partie 2 : Amélioration avec l'algorithme A* (a-star)
 
