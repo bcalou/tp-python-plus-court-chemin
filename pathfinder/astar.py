@@ -1,7 +1,7 @@
 from pathfinder.pathfinder import *
 from pathfinder.heuristics import *
 
-class Astar(PathFinder):
+class AStar(PathFinder):
     def __init__(self, routes: dict[City, dict[City, int]], weight: City):
         PathFinder.__init__(self, routes)
         self.weight = weight
@@ -60,15 +60,18 @@ class Astar(PathFinder):
         self.cities[start_city]["distance"] = 0
         cities_to_visit = [start_city]
         city_counter = 0
+        distance_calc = 0
         while city_counter <= 11:
             for next_possible_city in self.routes[cities_to_visit[city_counter]]:
                 if not next_possible_city in cities_to_visit :
                     cities_to_visit.append(next_possible_city)
-                if self.cities[next_possible_city]["distance"] + self.weight > self.routes[cities_to_visit[city_counter]][next_possible_city] + self.cities[cities_to_visit[city_counter]]["distance"]:
+                if self.cities[next_possible_city]["distance"] + self.weight[next_possible_city] > self.cities[cities_to_visit[city_counter]]["distance"] + self.weight[cities_to_visit[city_counter]]:
                     self.cities[next_possible_city]["distance"] = self.routes[cities_to_visit[city_counter]][next_possible_city] + self.cities[cities_to_visit[city_counter]]["distance"]
                     self.cities[next_possible_city]["from"] = cities_to_visit[city_counter]
+                    print(self.cities[next_possible_city]["distance"])
+                    if self.cities[end_city]["distance"] != float("inf"):
+                        break
             city_counter += 1
-            
         fastest_path: Path = {
             "total" : self.cities[end_city]["distance"],
             "steps" : [end_city]

@@ -59,10 +59,13 @@ class PathFinder:
         self.cities[start_city]["distance"] = 0
         cities_to_visit = [start_city]
         city_counter = 0
+        distance_calc = 0
         while city_counter <= 11:
             for next_possible_city in self.routes[cities_to_visit[city_counter]]:
                 if not next_possible_city in cities_to_visit :
                     cities_to_visit.append(next_possible_city)
+                print(distance_calc)
+                distance_calc += 1
                 if self.cities[next_possible_city]["distance"] > self.routes[cities_to_visit[city_counter]][next_possible_city] + self.cities[cities_to_visit[city_counter]]["distance"]:
                     self.cities[next_possible_city]["distance"] = self.routes[cities_to_visit[city_counter]][next_possible_city] + self.cities[cities_to_visit[city_counter]]["distance"]
                     self.cities[next_possible_city]["from"] = cities_to_visit[city_counter]
