@@ -52,7 +52,7 @@ Cela est plus propre que de passer des strings non typées et qui ne sont pas n�
 Dans vos print, vous pouvez afficher la valeur associée ainsi :
 
 ```py
-print(City.BORDEAUX.value)
+print(City.BORDEAUX.name)
 ```
 
 #### Graphe
