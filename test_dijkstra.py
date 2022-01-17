@@ -2,6 +2,11 @@ from pathfinder.city import City
 from pathfinder.pathfinder import PathFinder
 from pathfinder.graph import graph
 
+test_pathfinder = PathFinder(graph)
+pathfinder_path = test_pathfinder.get_shortest_path(City.LYON, City.MARSEILLE)
+print(pathfinder_path)
+
+"""
 tests = [
   {
     "start": City.BORDEAUX,
@@ -62,3 +67,4 @@ for test in tests:
         error = True
 
 print('\033[92m✓ OK' if not error else '\033[91m❌ KO')
+"""
