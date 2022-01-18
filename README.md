@@ -17,6 +17,7 @@ Toujours à la recherche de nouveaux exploits à accomplir, vous décidez de par
 ### 1.a Résolution manuelle
 
 Commencez par trouver ce qui vous semble être le plus court chemin sans technique particulière. Notez votre réponse.
+Bordeaux --> Orleans --> Paris --> Strasbourg (57h)
 
 ### 1.b Algorithme de Dijkstra
 
@@ -25,6 +26,8 @@ Sans l'implémenter pour le moment, trouvez le plus court chemin en utilisant ma
 Notez chaque étape de votre raisonnement sur une feuille ou un document texte pour bien vous familiariser avec l'algorithme.
 
 Comparez avec votre réponse précédente.
+
+Bordeaux --> Orleans --> Paris --> Strassbourg 57(Paris)
 
 ### 1.c Implémentation
 
@@ -138,7 +141,7 @@ Si vous avez correctement nommé vos fichiers et classes, le fichier `test_dijks
 
 Combien de calculs de distance avez-vous effectué pour parvenir au résultat Bordeaux -> Strasbourg ?
 
-Autrement dit, combien de fois avez vous mis à jour la distance pour un point du graphe ?
+Autrement dit, combien de fois avez vous mis à jour la distance pour un point du graphe ? 12 updates.
 
 ## Partie 2 : Amélioration avec l'algorithme A* (a-star)
 
