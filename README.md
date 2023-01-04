@@ -57,14 +57,16 @@ print(City.BORDEAUX.name)
 
 #### Graphe
 
-Créez un fichier `pathfinder/graph.py`.
+Créez un fichier `pathfinder/graphs.py`.
 
 En utilisant l'énumération `City` que vous avez créée, stockez dans une variable `graph` la **liste d'adjacences** du graphe dont l'image est présentée plus haut.
 
 Pour vous aider, voici à quoi devrait ressembler le début du graph :
 
 ```py
-graph = {
+Graph = dict[City, dict[City, int]]
+
+graph: Graph = {
     City.BORDEAUX: {
         City.NANTES: 19,
         City.ORLEANS: 24,
@@ -87,28 +89,26 @@ graph = {
 
 C'est long et répétitif. Courage.
 
-_Note : les types Python natifs ne permettent pas de typer des objets aussi complexes. Il faudra nous en passer !_
-
 #### Type Path
 
-Créez un fichier `pathfinder/path.py`.
+Créez un fichier `pathfinder/types.py`.
 
-Ce fichier sera très court. À l'aide de `TypedDict`, déclarez un type `Path`.
+À l'aide de `TypedDict`, déclarez un type `Path`.
 
 Ce type représentera l'objet qui contient la réponse au problème donné. Il contient deux membres :
 
 - `total` qui est un `float` représentant la distance ou le coût total du trajet
-- `steps` qui est une liste de ville `City` par lesquelles nous devons passer. **La ville de départ et la ville d'arrivée doivent être incluses dans la réponse**.
+- `steps` qui est une liste de villes `City` par lesquelles nous devons passer. **La ville de départ et la ville d'arrivée doivent être incluses dans la réponse**.
 
 #### Classe PathFinder
 
-Passons enfin au fichier principal : `pathfinder/pathfinder.py`. Attention, il s'agit d'un nouveau fichier à créer, à ne pas confondre avec celui déjà présent à la racine.
+Passons enfin au fichier principal : `pathfinder/pathfinder.py`.
 
 Nous allons utiliser les classes pour structurer notre code. En effet, les autres algorithmes que nous verrons par la suite sont très similaire à Dijkstra. Aussi, il sera intéressant **d'étendre** la classe **PathFinder** pour implémenter ces nouveaux algorithmes.
 
 Pour le moment, contentez vous de déclarer une classe `PathFinder`. Le constructeur de cette classe prend en paramètre une variable `graph`.
 
-Dans votre fichier racine `pathfinder.py`, vous pourrez donc instancier la classe ainsi :
+Dans votre fichier racine `main.py`, vous pourrez donc instancier la classe ainsi :
 
 ```
 pathfinder = PathFinder(graph)
@@ -169,7 +169,7 @@ Créez un fichier `pathfinder/heuristics.py`, dans lequel vous ajouterez un dict
 Voici à quoi ressemblera le début de ce fichier :
 
 ```py
-heuristics = {
+heuristics: dict[City, int] = {
     City.BORDEAUX: 47,
     City.DIJON: 15,
     City.LILLE: 25,
@@ -257,7 +257,7 @@ Un nouveau graphe doit être défini. Dans le fichier `pathfinder/graph.py`, ajo
 Voici le début de la déclaration pour vous aider :
 
 ```py
-spfa_graph = {
+spfa_graph: Graph = {
     City.BORDEAUX: {
         City.NANTES: 50,
         City.TOULOUSE: 50
