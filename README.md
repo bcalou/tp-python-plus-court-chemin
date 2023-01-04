@@ -111,6 +111,7 @@ Pour le moment, contentez vous de déclarer une classe `PathFinder`. Le construc
 Dans votre fichier racine `main.py`, vous pourrez donc instancier la classe ainsi :
 
 ```
+py
 pathfinder = PathFinder(graph)
 ```
 
@@ -184,7 +185,7 @@ Dans un fichier `pathfinder/astar.py`, créez la classe `AStar`, qui hérite de 
 
 En plus du graphe, cette classe enfant prend en paramètre une variable `heuristics`.
 
-Dans votre fichier racine `pathfinder.py`, vous pourrez donc instancier la classe ainsi :
+Dans votre fichier racine `main.py`, vous pourrez donc instancier la classe ainsi :
 
 ```py
 astar = AStar(graph, heuristics)
@@ -252,7 +253,7 @@ Utilisez l'algorithme à la main (papier ou document texte) pour résoudre le tr
 
 #### Graphe
 
-Un nouveau graphe doit être défini. Dans le fichier `pathfinder/graph.py`, ajoutez une variable `spfa_graph`.
+Un nouveau graphe doit être défini. Dans le fichier `pathfinder/graphs.py`, ajoutez une variable `spfa_graph`.
 
 Voici le début de la déclaration pour vous aider :
 
@@ -274,7 +275,7 @@ spfa_graph: Graph = {
 
 Dans un fichier `pathfinder/spfa.py`, créez une classe `SPFA` héritant de la classe `PathFinder`.
 
-Dans votre fichier racine `pathfinder.py`, vous pourrez donc instancier la classe ainsi :
+Dans votre fichier racine `main.py`, vous pourrez donc instancier la classe ainsi :
 
 ```py
 spfa = SPFA(spfa_graph)
