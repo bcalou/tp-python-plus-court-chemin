@@ -35,13 +35,33 @@ error: bool = False
 test_pathfinder = AStar(graph, heuristics)
 
 for test in tests:
-    print("\033[34m-> Testing Pathfinder path from", test["start"], "to", test["end"], "\033[0m")
-    pathfinder_path = test_pathfinder.get_shortest_path(test["start"], test["end"])
+    print(
+        "\033[34m-> Testing Pathfinder path from",
+        test["start"],
+        "to",
+        test["end"],
+        "\033[0m"
+    )
+    pathfinder_path = test_pathfinder.get_shortest_path(
+      test["start"], test["end"]
+    )
 
     if pathfinder_path == test["path"]:
-        print("\033[92m✓ Test OK for Pathfinder path from", test["start"], "to", test["end"], "\033[0m")
+        print(
+            "\033[92m✓ Test OK for Pathfinder path from",
+            test["start"],
+            "to",
+            test["end"],
+            "\033[0m"
+        )
     else:
-        print("\033[91mError for Pathfinder path from", test["start"], "to", test["end"], "\033[0m")
+        print(
+            "\033[91mError for Pathfinder path from",
+            test["start"],
+            "to",
+            test["end"],
+            "\033[0m"
+        )
         print("Expected", test["path"])
         print("Got ", pathfinder_path)
         error = True
