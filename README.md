@@ -64,7 +64,7 @@ En utilisant l'énumération `City` que vous avez créée, stockez dans une vari
 Pour vous aider, voici à quoi devrait ressembler le début du graph :
 
 ```py
-Graph = dict[City, dict[City, int]]
+Graph = dict[City, dict[City, float]]
 
 graph: Graph = {
     City.BORDEAUX: {
@@ -170,7 +170,7 @@ Créez un fichier `pathfinder/heuristics.py`, dans lequel vous ajouterez un dict
 Voici à quoi ressemblera le début de ce fichier :
 
 ```py
-heuristics: dict[City, int] = {
+heuristics: dict[City, float] = {
     City.BORDEAUX: 47,
     City.DIJON: 15,
     City.LILLE: 25,
