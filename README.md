@@ -18,6 +18,8 @@ Toujours à la recherche de nouveaux exploits à accomplir, vous décidez de par
 
 Commencez par trouver ce qui vous semble être le plus court chemin sans technique particulière. Notez votre réponse.
 
+Bordeaux > Orléans > Dijon > Strasbourg = 24 + 15 + 20 = 59
+
 ### 1.b Algorithme de Dijkstra
 
 Sans l'implémenter pour le moment, trouvez le plus court chemin en utilisant manuellement l'algorithme de Dijkstra.
@@ -25,6 +27,9 @@ Sans l'implémenter pour le moment, trouvez le plus court chemin en utilisant ma
 Notez chaque étape de votre raisonnement sur une feuille ou un document texte pour bien vous familiariser avec l'algorithme.
 
 Comparez avec votre réponse précédente.
+
+Grace à l'algorithme de Dijkstra, je trouve un chemin plus court :
+Bordeaux > Orléans > Paris > Strasbourg = 24 + 7 + 26 = 57
 
 ### 1.c Implémentation
 
