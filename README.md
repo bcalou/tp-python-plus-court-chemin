@@ -166,6 +166,9 @@ En utilisant ces heuristiques, résolvez "manuellement" (sur une feuille ou un d
 
 **Important** : l'algorithme s'arrête dès qu'une solution est trouvée. Ce n'est pas nécessairement la meilleure, mais *souvent* l'une des meilleures.
 
+En utilisant l'algorithme A*, on trouve le chemin suivant :
+Bordeaux > Orléans > Dijon > Strasbourg = 24 + 15 + 20 = 59
+
 ### 2.b Implémentation
 
 #### Les heuristiques
