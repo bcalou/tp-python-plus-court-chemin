@@ -13,7 +13,10 @@ class PathFinder:
     def get_shortest_path(self, start: City, end: City) -> Path:
 
         self.analyse_next_city(start, end)
-        return self.get_path(start, end)
+        result: Path = self.get_path(start, end)
+        self.reset()
+        
+        return result
 
     def analyse_next_city(self, city: City, end: City, current_sum: float = 0) -> None:
         for neighbour in self.graph[city]:
@@ -40,6 +43,8 @@ class PathFinder:
     def get_path(self, start: City, end: City) -> Path:
         to_ret: Path = {"total": 0, "steps": []}
         current_city: City = end
+
+        print(self.villes)
         
         while current_city != start and self.villes[current_city]["previous"]:
             to_ret["steps"].insert(0, current_city)
@@ -50,3 +55,8 @@ class PathFinder:
         to_ret["total"] = self.villes[end]["cout"]
 
         return to_ret
+
+
+    def reset(self) -> None:
+        self.villes = {}
+        self.min_to_end = math.inf
