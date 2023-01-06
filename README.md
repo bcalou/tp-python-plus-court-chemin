@@ -1,4 +1,4 @@
-# TP : algorithmes de plus court chemin
+# TP : algorithmes de plus coucourt chemin
 
 Dans ce TP, nous aborderons plusieurs stratégies permettant de trouver le plus court chemin dans un graphe, en fonction des propriétés de ce dernier.
 
