@@ -1,6 +1,6 @@
 from pathfinder.city import City
 from pathfinder.spfa import SPFA
-from pathfinder.graph import spfa_graph
+from pathfinder.graphs import spfa_graph
 
 tests = [
   {
