@@ -3,6 +3,7 @@ from pathfinder.astar import AStar
 from pathfinder.graphs import graph
 from pathfinder.heuristics import heuristics
 
+
 tests = [
   {
     "start": City.BORDEAUX,
