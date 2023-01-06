@@ -1,6 +1,6 @@
 from pathfinder.city import City
 from pathfinder.pathfinder import PathFinder
-from pathfinder.graph import graph
+from pathfinder.graphs import graph
 
 tests = [
   {

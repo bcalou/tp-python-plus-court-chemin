@@ -1,6 +1,6 @@
 from pathfinder.city import City
 from pathfinder.astar import AStar
-from pathfinder.graph import graph
+from pathfinder.graphs import graph
 from pathfinder.heuristics import heuristics
 
 tests = [
