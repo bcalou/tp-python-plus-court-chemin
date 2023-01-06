@@ -23,25 +23,30 @@ class PathFinder:
             
             total_cost = current_sum + self.graph[city][neighbour]
 
+            if neighbour == end:
+                if total_cost < self.min_to_end:
+                    self.min_to_end = total_cost
+                    self.villes[neighbour] = {"previous": city, "cout": total_cost}
+                return
+
             if (
                 neighbour not in self.villes or
                 self.villes[neighbour]["cout"] > total_cost
             ):
                 self.villes[neighbour] = {"previous": city, "cout": total_cost}
-
-            if neighbour == end:
-                if total_cost < self.min_to_end:
-                    self.min_to_end = total_cost
-                return
+                self.analyse_next_city(neighbour, end, total_cost)
             
-            self.analyse_next_city(neighbour, end, total_cost)
 
     def get_path(self, start: City, end: City) -> Path:
         to_ret: Path = {"total": 0, "steps": []}
         current_city: City = end
+        
         while current_city != start and self.villes[current_city]["previous"]:
             to_ret["steps"].insert(0, current_city)
             current_city = self.villes[current_city]["previous"] # type: ignore
             # (le linter ne voit pas la condition du while...)
+        
         to_ret["steps"].insert(0, start)
+        to_ret["total"] = self.villes[end]["cout"]
+
         return to_ret
