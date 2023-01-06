@@ -10,3 +10,7 @@ from pathfinder.city import City
 class Path(TypedDict):
     total: float
     steps: list[City]
+
+class Ville(TypedDict):
+    previous: City | None
+    cout: float
