@@ -1,5 +1,5 @@
 import math
-from pathfinder.graph import Graph
+from pathfinder.graphs import Graph
 from pathfinder.types import Path, Ville
 from pathfinder.city import City
 
