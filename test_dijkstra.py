@@ -8,7 +8,12 @@ tests = [
     "end": City.STRASBOURG,
     "path": {
       "total": 57,
-      "steps": [City.BORDEAUX, City.ORLEANS, City.PARIS, City.STRASBOURG]
+      "steps": [
+        City.BORDEAUX, 
+        City.ORLEANS, 
+        City.PARIS, 
+        City.STRASBOURG
+      ]
     }
   },
   {
@@ -16,7 +21,12 @@ tests = [
     "end": City.BORDEAUX,
     "path": {
       "total": 57,
-      "steps": [City.STRASBOURG, City.PARIS, City.ORLEANS, City.BORDEAUX]
+      "steps": [
+        City.STRASBOURG, 
+        City.PARIS, 
+        City.ORLEANS, 
+        City.BORDEAUX
+      ]
     }
   },
   {
@@ -38,7 +48,11 @@ tests = [
     "end": City.NANTES,
     "path": {
       "total": 31,
-      "steps": [City.LILLE, City.ROUEN, City.NANTES]
+      "steps": [
+        City.LILLE, 
+        City.ROUEN, 
+        City.NANTES
+      ]
     }
   },
   {
@@ -46,7 +60,10 @@ tests = [
     "end": City.MARSEILLE,
     "path": {
       "total": 18,
-      "steps": [City.LYON, City.MARSEILLE]
+      "steps": [
+        City.LYON, 
+        City.MARSEILLE
+      ]
     }
   }
 ]
