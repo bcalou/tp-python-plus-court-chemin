@@ -73,5 +73,7 @@ class PathFinder:
 
 
     def reset(self) -> None:
+        """Réinitialise les variables de l'algo"""
+        self.to_visit = []
         self.villes = {}
         self.min_to_end = math.inf
