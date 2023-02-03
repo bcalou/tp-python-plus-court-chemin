@@ -10,12 +10,12 @@ class PathFinder:
 
     def __init__(self, graph: Graph):
         self.graph = graph
-        self.unchecked_cities = {}
-        self.checked_cities = {}
         print("Class PathFinder Initialised")
 
     def get_shortest_path(self, start: City, end: City) -> Path|None:
         city_to_check: City = start
+        self.unchecked_cities = {}
+        self.checked_cities = {}
         self.unchecked_cities.update({
             start: {
                 "previous_city": start,
@@ -41,8 +41,7 @@ class PathFinder:
 
     def get_nearest_unchecked_city(self) -> City|None:
         """Returns the city with minimum distance"""
-        # if len(self.unchecked_cities) == 0:
-        #     return None
+
         return min(self.unchecked_cities, key=self.get_total_from_path)
 
     def get_total_from_path(self, city: City) -> float:
