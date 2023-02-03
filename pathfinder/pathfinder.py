@@ -16,7 +16,7 @@ class PathFinder:
         self.to_visit.append(start)
         self.villes[start] = {"previous": None, "cout": 0}
 
-        self.analyse_next_city(start, end)
+        self.pathfind(start, end)
         result: Path = self.get_path(start, end)
         self.reset()
 
@@ -43,7 +43,7 @@ class PathFinder:
     #             self.villes[neighbour] = {"previous": city, "cout": total_cost}
     #             self.analyse_next_city(neighbour, end, total_cost)
 
-    def analyse_next_city(self, city: City, end: City) -> None:
+    def pathfind(self, city: City, end: City) -> None:
         """Fonction principale de l'algo"""
         while self.to_visit and not self.finished():
             self.sort_visits()
