@@ -66,7 +66,8 @@ class PathFinder:
                     self.villes[neighbour]["cout"] > total_cost
                 ):
                     self.villes[neighbour] = {"previous": city, "cout": total_cost}
-                    self.to_visit.append(neighbour)
+                    if neighbour not in self.to_visit:
+                        self.to_visit.append(neighbour)
 
     def sort_visits(self) -> None:
         """Algo de tri des villes à visiter, à modifier en fonction de l'algo"""
