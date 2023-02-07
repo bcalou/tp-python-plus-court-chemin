@@ -114,6 +114,7 @@ spfa_graph: Graph = {
         City.LYON: 30
     },
     City.TOULOUSE: {
-        City.MARSEILLE: 40
+        City.MARSEILLE: 40,
+        City.LYON: -75
     }
 }
