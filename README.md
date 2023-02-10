@@ -166,6 +166,9 @@ En utilisant ces heuristiques, résolvez "manuellement" (sur une feuille ou un d
 
 **Important** : l'algorithme s'arrête dès qu'une solution est trouvée. Ce n'est pas nécessairement la meilleure, mais *souvent* l'une des meilleures.
 
+<img src="./astarvilles.png">
+
+
 ### 2.b Implémentation
 
 #### Les heuristiques
@@ -241,11 +244,12 @@ Mais il y a aussi des valeurs en vert : des gens très seuls et très riches, qu
 ### 3.a Résolution manuelle
 
 Saurez-vous trouver le meilleur trajet de tête ? Probablement.
-
+<img src="./spfavilles.png">
 ### 3.b Est-ce que Dijkstra fonctionne ?
 
 Utilisez l'algorithme de Dijkstra pour résoudre le problème. Qu'observez-vous ?
-
+25
+<City.BORDEAUX: 'Bordeaux'>, <City.TOULOUSE: 'Toulouse'>, <City.LYON: 'Lyon'>, <City.DIJON: 'Dijon'>, <City.STRASBOURG: 'Strasbourg'>
 ### 3.c Algorithme SPFA
 
 L'algorithme SPFA (*Shortest Path Faster Algorithm*, nom peu inspiré), est une variation de l'algorithme de Bellman-Ford, que nous ne verrons pas ici mais qui est très répandu.
@@ -253,7 +257,7 @@ L'algorithme SPFA (*Shortest Path Faster Algorithm*, nom peu inspiré), est une 
 SPFA permet de trouver le meilleur chemin dans un graphe dont les arcs peuvent être de poids négatif, à condition qu'il n'y ait pas de **circuit absorbant**, c'est à dire de circuit "magique" qui permette de tendre vers moins l'infini. Vous pouvez le vérifier sur la carte, il n'y a pas d'astuce pour se faire de l'argent à l'infini.
 
 Utilisez l'algorithme à la main (papier ou document texte) pour résoudre le trajet Bordeaux -> Strasbourg. Comparez à votre première résolution.
-
+<img src="./spfavilles.png">
 ### 3.d Implémentation
 
 #### Graphe
