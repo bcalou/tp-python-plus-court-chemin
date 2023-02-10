@@ -1,5 +1,6 @@
-from city import City
+from pathfinder.city import City
 Graph = dict[City, dict[City, float]]
+
 
 graph: Graph = {
     City.BORDEAUX: {
