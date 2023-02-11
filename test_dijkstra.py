@@ -1,5 +1,5 @@
 from pathfinder.city import City
-from pathfinder.pathfinder import PathFinder
+from pathfinder.pathfinderClass import PathFinder
 from pathfinder.graphs import graph
 
 tests = [
