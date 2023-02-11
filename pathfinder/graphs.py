@@ -86,14 +86,14 @@ spfa_graph: Graph = {
     City.LILLE: {
     },
     City.LYON: {
-        City.DIJON: 20,
+        City.DIJON: 20
     },
     City.MARSEILLE: {
-        City.LYON: 30,
+        City.LYON: 30
     },
     City.NANTES: {
         City.ORLEANS: 10,
-        City.RENNES: 20,
+        City.RENNES: 20
     },
     City.ORLEANS: {
         City.PARIS: 40,
