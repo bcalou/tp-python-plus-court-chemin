@@ -115,8 +115,7 @@ Pour le moment, contentez vous de déclarer une classe `PathFinder`. Le construc
 
 Dans votre fichier racine `main.py`, vous pourrez donc instancier la classe ainsi :
 
-```
-py
+```py
 pathfinder = PathFinder(graph)
 ```
 
