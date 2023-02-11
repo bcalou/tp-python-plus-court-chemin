@@ -100,7 +100,7 @@ class PathFinder:
 
             if self._should_visit_city_when_met(connected_city):
                 self._cities_to_visit.append(connected_city)
-            
+
             self._update_city_weight(connected_city, city)
 
         self._cities_to_visit.remove(city)
@@ -116,21 +116,27 @@ class PathFinder:
         """Determine whether the algorithm should visit a city when it meets
         one. May vary depending on the algorithm used"""
 
-        if city not in self._cities_to_visit and (self._get_city_weight(city) <= self._get_city_weight(self._end_city)):
+        if city not in self._cities_to_visit and (
+                self._get_city_weight(city) <= self._get_city_weight(self._end_city)
+        ):
             return True
         else:
             return False
-    
+
     def _update_city_weight(self, connected_city: City, parent_city: City):
         """Method to update the weight of a city if needed"""
 
-        new_weight: float = self._get_city_weight(parent_city) + self._graph[parent_city].get(connected_city)
+        new_weight: float = (
+            self._get_city_weight(parent_city)
+            + self._graph[parent_city].get(connected_city)
+        )
         old_weight: float = self._get_city_weight(connected_city)
 
         if new_weight < old_weight:
             self._cities_infos_dict[connected_city]["closest_city"] = parent_city
             self._cities_infos_dict[connected_city]["distance_to_origin"] = (
-                self._cities_infos_dict[parent_city]["distance_to_origin"] + self._graph[parent_city].get(connected_city)
+                self._cities_infos_dict[parent_city]["distance_to_origin"]
+                + self._graph[parent_city].get(connected_city)
             )
             self._computed_distances_count += 1
 

@@ -15,7 +15,7 @@ class AStar(PathFinder):
     def get_shortest_path(self, start_city: City, end_city: City):
         """The only public method, the one to call. May vary depending on the
         algorithm used"""
-        
+
         self._reset_variables(start_city, end_city)
 
         while self._found_end_city == False:

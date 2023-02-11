@@ -20,5 +20,5 @@ class SPFA(PathFinder):
     def _should_visit_city_when_weight_changed(self, city: City) -> bool:
         """Determine whether the algorithm should visit a city when its weight
         was updated. May vary depending on the algorithm used"""
-        
+
         return True if city not in self._cities_to_visit else False
