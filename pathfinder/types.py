@@ -13,4 +13,3 @@ class CityInfo(TypedDict):
 
 
 CitiesInfosDict = dict[City, CityInfo]
-

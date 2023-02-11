@@ -1,13 +1,14 @@
 from pathfinder.pathfinder import *
 
+
 class AStar(PathFinder):
     def __init__(self, graph: Graph, heuristics: dict[City, float]):
         super().__init__(graph)
         self._heuristics = heuristics
-    
+
     def _get_city_weight(self, city: City) -> float:
         return self._cities_infos_dict[city]["distance_to_origin"] + self._heuristics[city]
-    
+
     def get_shortest_path(self, start_city: City, end_city: City):
         self._reset_variables(start_city, end_city)
 

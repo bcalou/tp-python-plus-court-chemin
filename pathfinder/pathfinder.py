@@ -13,7 +13,7 @@ class PathFinder:
         self._cities_to_visit: list[City] = []
         self._visited_cities: list[City] = []
         self._computed_distances_count: int = 0
-    
+
     def get_shortest_path(self, start_city: City, end_city: City):
         self._reset_variables(start_city, end_city)
 
@@ -24,7 +24,7 @@ class PathFinder:
         # print(f'self._computed_distances_count : {self._computed_distances_count}')
         self._path = self._get_path()
         return self._path
-    
+
     def _reset_variables(self, start_city: City, end_city: City):
         self._start_city = start_city
         self._end_city = end_city
@@ -48,9 +48,9 @@ class PathFinder:
                     "closest_city": city,
                     "distance_to_origin": float("inf")
                 }
-        
+
         return cities_info_dict
-    
+
     def _get_next_city_to_visit(self) -> City:
         next_city_to_visit: City
         next_city_weight: float = float("inf")
@@ -63,10 +63,10 @@ class PathFinder:
                 next_city_weight = city_weight
 
         return next_city_to_visit
-    
+
     def _get_city_weight(self, city: City) -> float:
         return self._cities_infos_dict[city]["distance_to_origin"]
-    
+
     def _visit_city(self, city: City):
 
         if city == self._end_city:
@@ -97,16 +97,16 @@ class PathFinder:
 
         self._cities_to_visit.remove(city)
         self._visited_cities.append(city)
-    
+
     def _should_skip_city(self, city: City) -> bool:
         return True if city in self._visited_cities else False
-    
-    def _should_visit_city_when_met(self, city:City) -> bool:
+
+    def _should_visit_city_when_met(self, city: City) -> bool:
         if city not in self._cities_to_visit and (self._get_city_weight(city) <= self._get_city_weight(self._end_city)):
             return True
         else:
             return False
-    
+
     def _should_visit_city_when_weight_changed(self, city) -> bool:
         return False
 
