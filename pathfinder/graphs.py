@@ -58,7 +58,7 @@ graph: Graph = {
         City.TOULOUSE: 28,
         City.BORDEAUX: 31,
         City.DIJON: 11,
-        City.ORLEANS:20,
+        City.ORLEANS: 20,
     },
     City.STRASBOURG: {
         City.DIJON: 20,

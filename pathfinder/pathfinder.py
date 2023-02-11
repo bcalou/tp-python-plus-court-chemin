@@ -10,12 +10,12 @@ class PathFinder:
     end: City
     start: City
 
-
     def __init__(self, graph: Graph):
         self.graph = graph
         print("Class PathFinder Initialised")
 
-    def get_shortest_path(self, start: City, end: City) -> Path|None:
+    def get_shortest_path(self, start: City, end: City) -> Path | None:
+        """Return the shortest calculated path from a start city to an end city"""
         self.start = start
         self.end = end
         self.checked_cities = {}
@@ -27,25 +27,24 @@ class PathFinder:
         }
         return self.calculate_shortest_path()
 
-
-    def calculate_shortest_path(self) -> Path|None :
+    def calculate_shortest_path(self) -> Path | None:
         """Calculate the path"""
 
         city_to_check: City = self.start
-        while city_to_check != self.end:  # or city_to_check is not None:
+        while city_to_check != self.end:
             self.execute_checks(city_to_check)
             city_to_check = self.get_next_city()
 
         self.checked_cities.update({city_to_check: self.unchecked_cities[city_to_check]})
         return self.compute_path(city_to_check)
 
-
     def execute_checks(self, city_to_check: City) -> City:
+        """Execute the checks to an unchecked city"""
         self.check_city(city_to_check)
         self.checked_cities.update({city_to_check: self.unchecked_cities[city_to_check]})
         del self.unchecked_cities[city_to_check]
 
-    def compute_path(self, last_city: City) -> Path|None:
+    def compute_path(self, last_city: City) -> Path | None:
         """Compute path from given city"""
 
         if last_city is not None:
@@ -60,12 +59,15 @@ class PathFinder:
         """Returns next city"""
 
         return self.get_nearest_unchecked_city()
+
     def get_nearest_unchecked_city(self) -> City:
         """Returns the city with minimum distance"""
 
         return min(self.unchecked_cities, key=self.get_cost)
 
     def get_cost(self, city: City) -> float:
+        """Return cost to get to city """
+
         return self.get_path_distance(city)
 
     def get_path_distance(self, city: City) -> float:
@@ -93,7 +95,7 @@ class PathFinder:
             total_cost_to_city: float = path_current_total + cost_to_next_city
 
             if not self.can_be_added_to_queue(city, next_city, total_cost_to_city):
-               continue
+                continue
 
             # adds or update the city in the unchecked list
             self.unchecked_cities.update({
@@ -103,7 +105,9 @@ class PathFinder:
                 }
             })
 
-    def can_be_added_to_queue(self, current_city: City ,next_city: City, cost: float) -> bool:
+    def can_be_added_to_queue(self, current_city: City, next_city: City, cost: float) -> bool:
+        """Do the checks of the algorithm to see if the city can be added to the pile"""
+
         # check if current next city is not in checked city,
         # or is not the previous city
         if next_city in self.checked_cities or \
