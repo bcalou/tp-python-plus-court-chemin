@@ -1,5 +1,5 @@
 from pathfinder.city import City
-from pathfinder.astar import AStar
+from pathfinder.astar import Astar
 from pathfinder.graphs import graph
 from pathfinder.heuristics import heuristics
 
@@ -33,7 +33,7 @@ tests = [
 
 error: bool = False
 
-test_pathfinder = AStar(graph, heuristics)
+test_pathfinder = Astar(graph, heuristics)
 
 for test in tests:
     print(
