@@ -4,30 +4,30 @@ from pathfinder.graphs import graph
 from pathfinder.heuristics import heuristics
 
 tests = [
-  {
-    "start": City.BORDEAUX,
-    "end": City.STRASBOURG,
-    "path": {
-      "total": 59,
-      "steps": [City.BORDEAUX, City.ORLEANS, City.DIJON, City.STRASBOURG]
+    {
+        "start": City.BORDEAUX,
+        "end": City.STRASBOURG,
+        "path": {
+            "total": 59,
+            "steps": [City.BORDEAUX, City.ORLEANS, City.DIJON, City.STRASBOURG]
+        }
+    },
+    {
+        "start": City.LILLE,
+        "end": City.STRASBOURG,
+        "path": {
+            "total": 29,
+            "steps": [City.LILLE, City.STRASBOURG]
+        }
+    },
+    {
+        "start": City.RENNES,
+        "end": City.STRASBOURG,
+        "path": {
+            "total": 50,
+            "steps": [City.RENNES, City.ROUEN, City.PARIS, City.STRASBOURG]
+        }
     }
-  },
-  {
-    "start": City.LILLE,
-    "end": City.STRASBOURG,
-    "path": {
-      "total": 29,
-      "steps": [City.LILLE, City.STRASBOURG]
-    }
-  },
-  {
-    "start": City.RENNES,
-    "end": City.STRASBOURG,
-    "path": {
-      "total": 50,
-      "steps": [City.RENNES, City.ROUEN, City.PARIS, City.STRASBOURG]
-    }
-  }
 ]
 
 error: bool = False
@@ -43,7 +43,7 @@ for test in tests:
         "\033[0m"
     )
     pathfinder_path = test_pathfinder.get_shortest_path(
-      test["start"], test["end"]
+        test["start"], test["end"]
     )
 
     if pathfinder_path == test["path"]:

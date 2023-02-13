@@ -136,7 +136,7 @@ Si vous avez correctement nommé vos fichiers et classes, le fichier `test_dijks
 
 #### Analyse
 
-Combien de calculs de distance avez-vous effectué pour parvenir au résultat Bordeaux -> Strasbourg ?
+Combien de calculs de distance avez-vous effectué pour parvenir au résultat Bordeaux -> Strasbourg ? 46
 
 Autrement dit, combien de fois avez vous mis à jour la distance pour un point du graphe ?
 
@@ -214,7 +214,7 @@ Jouez les tests du fichier `test_astar.py`.
 
 #### Analyse
 
-Combien de calculs de distance ont été nécessaires pour calculer la solution du trajet Bordeaux -> Strasbourg ?
+Combien de calculs de distance ont été nécessaires pour calculer la solution du trajet Bordeaux -> Strasbourg ? 46
 
 Que pensez-vous de la solution obtenue, comparée à l'algorithme de Dijsktra ?
 
