@@ -18,6 +18,8 @@ Toujours à la recherche de nouveaux exploits à accomplir, vous décidez de par
 
 Commencez par trouver ce qui vous semble être le plus court chemin sans technique particulière. Notez votre réponse.
 
+Bordeaux > Orléans > Dijon > Strasbourg = 24 + 15 + 20 = 59
+
 ### 1.b Algorithme de Dijkstra
 
 Sans l'implémenter pour le moment, trouvez le plus court chemin en utilisant manuellement l'algorithme de Dijkstra.
@@ -25,6 +27,9 @@ Sans l'implémenter pour le moment, trouvez le plus court chemin en utilisant ma
 Notez chaque étape de votre raisonnement sur une feuille ou un document texte pour bien vous familiariser avec l'algorithme.
 
 Comparez avec votre réponse précédente.
+
+Grace à l'algorithme de Dijkstra, je trouve un chemin plus court :
+Bordeaux > Orléans > Paris > Strasbourg = 24 + 7 + 26 = 57
 
 ### 1.c Implémentation
 
@@ -110,7 +115,8 @@ Pour le moment, contentez vous de déclarer une classe `PathFinder`. Le construc
 
 Dans votre fichier racine `main.py`, vous pourrez donc instancier la classe ainsi :
 
-```py
+```
+py
 pathfinder = PathFinder(graph)
 ```
 
@@ -159,6 +165,9 @@ La valeur est le temps qu'il faudrait à un cycliste pédalant à 16km/h pour pa
 En utilisant ces heuristiques, résolvez "manuellement" (sur une feuille ou un document texte) le trajet Bordeaux -> Strasbourg.
 
 **Important** : l'algorithme s'arrête dès qu'une solution est trouvée. Ce n'est pas nécessairement la meilleure, mais *souvent* l'une des meilleures.
+
+En utilisant l'algorithme A*, on trouve le chemin suivant :
+Bordeaux > Orléans > Dijon > Strasbourg = 24 + 15 + 20 = 59
 
 ### 2.b Implémentation
 
