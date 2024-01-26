@@ -18,11 +18,25 @@ Toujours à la recherche de nouveaux exploits à accomplir, vous décidez de par
 
 Commencez par trouver ce qui vous semble être le plus court chemin sans technique particulière. Notez votre réponse.
 
+Je prends le chemin qui semble le plus "droit":
+
+Bordeaux -> Orléans -> Paris -> Strasbourg
+
+J'obtiens un temps de trajet de 24+7+26 = 57 heures
+
 ### 1.b Algorithme de Dijkstra
 
 Sans l'implémenter pour le moment, trouvez le plus court chemin en utilisant manuellement l'algorithme de Dijkstra.
 
 Notez chaque étape de votre raisonnement sur une feuille ou un document texte pour bien vous familiariser avec l'algorithme.
+
+En suivant l'lgorithme de dijkstra on trouve 3 solutions:
+
+Bordeaux - Orléans - Paris - Starsbourg 57 heures
+
+Bordeaux - Orléans - Dijon - Strasbourg 59 heures
+
+Bordeaux - Orléans - Paris - Lille - Strasbourg 73 heures
 
 Comparez avec votre réponse précédente.
 
