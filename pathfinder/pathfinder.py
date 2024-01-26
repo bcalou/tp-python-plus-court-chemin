@@ -26,8 +26,9 @@ class Pathfinder:
                                             cost_to_current_city,
                                             shortest_paths)
 
-            next_destinations = {city: shortest_paths[city] for city in
-                                 shortest_paths if city not in visited}
+            next_destinations = {
+                city: shortest_paths[city]
+                for city in shortest_paths if city not in visited}
             # if not next_destinations:
             #    return "Route Not Possible"
             current_city = self._get_next_city(next_destinations)
