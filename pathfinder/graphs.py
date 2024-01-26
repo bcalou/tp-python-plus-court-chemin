@@ -74,3 +74,48 @@ graph: Graph = {
         City.PARIS: 26
     }
 }
+
+spfa_graph: Graph = {
+    City.BORDEAUX: {
+        City.NANTES: 50,
+        City.TOULOUSE: 50
+    },
+    City.DIJON: {
+        City.STRASBOURG: 30,
+    },
+    City.LILLE: {
+    },
+    City.LYON: {
+        City.DIJON: 20
+    },
+    City.MARSEILLE: {
+        City.LYON: 30
+    },
+    City.TOULOUSE: {
+        City.LYON: -75,
+        City.MARSEILLE: 40
+    },
+    City.NANTES: {
+        City.ORLEANS: 10,
+        City.RENNES: 20
+    },
+    City.ORLEANS: {
+        City.STRASBOURG: 15,
+        City.PARIS: 40
+    },
+    City.PARIS: {
+        City.LILLE: 50,
+        City.STRASBOURG: -10,
+        City.ORLEANS: -30
+    },
+    City.RENNES: {
+        City.PARIS: 20,
+        City.ROUEN: 10
+    },
+    City.ROUEN: {
+        City.PARIS: -50
+    },
+    City.STRASBOURG: {
+        City.LILLE: 50
+    }
+}

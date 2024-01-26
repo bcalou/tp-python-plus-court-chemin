@@ -10,7 +10,7 @@ heuristics: dict[City, float] = {
     City.NANTES: 44,
     City.ORLEANS: 27,
     City.PARIS: 25,
-    City.RENNES: 34,
+    City.RENNES: 43,
     City.ROUEN: 31,
     City.STRASBOURG: float("inf")
 }

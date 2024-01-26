@@ -235,6 +235,9 @@ Mais il y a aussi des valeurs en vert : des gens très seuls et très riches, qu
 
 Saurez-vous trouver le meilleur trajet de tête ? Probablement.
 
+Bordeaux -> Nantes -> Rennes -> Rouen -> Paris -> Orleans -> Strasbourg
+15
+
 ### 3.b Est-ce que Dijkstra fonctionne ?
 
 Utilisez l'algorithme de Dijkstra pour résoudre le problème. Qu'observez-vous ?
