@@ -18,6 +18,8 @@ Toujours à la recherche de nouveaux exploits à accomplir, vous décidez de par
 
 Commencez par trouver ce qui vous semble être le plus court chemin sans technique particulière. Notez votre réponse.
 
+A chaque noeud, on analyse chaque chemin en les additionnant au chemin parcouru jusqu'alors, si un chemin enregistreé rejoins déjà le noeud au bout de la branche analysée, on compare alors la valeur des deux chemins et on garde la plus petite, on retiendra alors cette distance entre ces deux noeuds comme la plus petite. De fil en aiguille, on va parcourir tout les noeuds et toute les possibilités de relier notre destination à notre point de départ.
+
 ### 1.b Algorithme de Dijkstra
 
 Sans l'implémenter pour le moment, trouvez le plus court chemin en utilisant manuellement l'algorithme de Dijkstra.
@@ -36,6 +38,7 @@ Créez un fichier `pathfinder/city.py`.
 À l'intérieur, créez une [énumération](https://docs.python.org/fr/3/library/enum.html) qui vous permettra d'avoir des constantes correspondant au nom de chaque ville.
 
 Voici à quoi devrait ressembler le début de votre énumération :
+
 
 ```py
 class City(Enum):
