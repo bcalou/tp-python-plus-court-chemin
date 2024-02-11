@@ -7,7 +7,5 @@ def main():
 
     pathfinder: Pathfinder = Pathfinder(graph)
 
-    print(pathfinder.get_shortest_path(City.PARIS, City.MARSEILLE))
-
 
 main()

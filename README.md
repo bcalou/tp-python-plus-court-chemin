@@ -18,7 +18,7 @@ Toujours à la recherche de nouveaux exploits à accomplir, vous décidez de par
 
 Commencez par trouver ce qui vous semble être le plus court chemin sans technique particulière. Notez votre réponse.
 
-A chaque noeud, on analyse chaque chemin en les additionnant au chemin parcouru jusqu'alors, si un chemin enregistreé rejoins déjà le noeud au bout de la branche analysée, on compare alors la valeur des deux chemins et on garde la plus petite, on retiendra alors cette distance entre ces deux noeuds comme la plus petite. De fil en aiguille, on va parcourir tout les noeuds et toute les possibilités de relier notre destination à notre point de départ.
+*A chaque noeud, on analyse chaque chemin en les additionnant au chemin parcouru jusqu'alors, si un chemin enregistreé rejoins déjà le noeud au bout de la branche analysée, on compare alors la valeur des deux chemins et on garde la plus petite, on retiendra alors cette distance entre ces deux noeuds comme la plus petite. De fil en aiguille, on va parcourir tout les noeuds et toute les possibilités de relier notre destination à notre point de départ.*
 
 ### 1.b Algorithme de Dijkstra
 
@@ -142,6 +142,8 @@ Adaptez cette commande aux autres algorithmes pour la suite (et retirer le chemi
 Combien de calculs de distance avez-vous effectué pour parvenir au résultat Bordeaux -> Strasbourg ?
 
 Autrement dit, combien de fois avez vous mis à jour la distance pour un point du graphe ?
+
+*La distance pour un point du graphe a été mise à jour une fois.*
 
 ## Partie 2 : Amélioration avec l'algorithme A* (a-star)
 
