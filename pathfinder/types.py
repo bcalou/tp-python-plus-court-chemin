@@ -1,5 +1,4 @@
 from typing import List, TypedDict
-
 from pathfinder.city import City
 
 

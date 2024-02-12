@@ -16,6 +16,7 @@ class SPFA(Pathfinder):
         """
             Returns the shortest path, applying the SPFA implementation.
         """
+
         self.__visited = [start]
         self.__queue = [start]
         self.__paths = {
@@ -33,9 +34,9 @@ class SPFA(Pathfinder):
                 neighbour_path = self.__paths.get(neighbour)
                 current_path: Path = self.__paths[current_city]
 
-                if neighbour_path == None or \
-                    (current_path["total"] + weight) < neighbour_path["total"]:
-                    
+                if neighbour_path is None or \
+                   (current_path["total"] + weight) < neighbour_path["total"]:
+
                     # Create the new shortest path to neighbour
                     new_path: Path = Pathfinder._copy_path(current_path)
                     new_path["steps"].append(neighbour)
@@ -49,6 +50,3 @@ class SPFA(Pathfinder):
                         self.__visited.append(neighbour)
 
         return self.__paths[end]
-
-
-    

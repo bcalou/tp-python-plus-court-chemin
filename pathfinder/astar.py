@@ -19,11 +19,11 @@ class AStar(Pathfinder):
         for path in self._paths:
             if path["steps"][-1] == self._end:
                 return path
-            
+
             if self._weighted_total(path) < self._weighted_total(optimal_path):
                 optimal_path = path
 
         return optimal_path
-    
+
     def _weighted_total(self, path: Path) -> float:
         return path["total"] + self.__heuristics[path["steps"][-1]]

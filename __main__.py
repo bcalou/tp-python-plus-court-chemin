@@ -15,6 +15,6 @@ def main():
 
     spfa: SPFA = SPFA(spfa_graph)
     print(spfa.get_shortest_path(City.BORDEAUX, City.STRASBOURG)["total"])
-    
+
 
 main()

@@ -27,16 +27,15 @@ class Pathfinder():
 
         while True:
             optimal_path: Path = self._optimal_path()
-            
+
             # We found the optimal path to end, we stop
             if optimal_path["steps"][-1] == end:
                 return optimal_path
-            
+
             # Else we evaluate all paths coming from our path and we repeat
             # we remove the last path as its not relevant anymore
             self._paths.remove(optimal_path)
             self.__parse_last_path_city(optimal_path)
-
 
     def __parse_last_path_city(self, path: Path):
         """
@@ -47,7 +46,8 @@ class Pathfinder():
         last_city: City = path["steps"][-1]
         for (neighbour, distance) in self._graph[last_city].items():
             # Useless to go back to where we already have been !
-            if neighbour in self._parsed_cities: continue
+            if neighbour in self._parsed_cities:
+                continue
 
             copy: Path = Pathfinder._copy_path(path)
             copy["steps"].append(neighbour)
@@ -62,7 +62,6 @@ class Pathfinder():
         # Reserve sort so that deletion is faster (optimisation)
         self._paths.sort(key=lambda path: path["total"], reverse=True)
         return self._paths[-1]
-
 
     @staticmethod
     def _copy_path(path: Path) -> Path:
