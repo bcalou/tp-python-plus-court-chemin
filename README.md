@@ -252,6 +252,8 @@ SPFA permet de trouver le meilleur chemin dans un graphe dont les arcs peuvent �
 
 Utilisez l'algorithme à la main (papier ou document texte) pour résoudre le trajet Bordeaux -> Strasbourg. Comparez à votre première résolution.
 
+<span style="color:lightgreen">On trouve 15€ par Nantes -> Rennes -> Rouen -> Paris -> Orléans -> Strasbourg</span>
+
 ### 3.d Implémentation
 
 #### Graphe

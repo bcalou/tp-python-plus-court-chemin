@@ -49,7 +49,7 @@ class Pathfinder():
             # Useless to go back to where we already have been !
             if neighbour in self._parsed_cities: continue
 
-            copy: Path = Pathfinder.__copy_path(path)
+            copy: Path = Pathfinder._copy_path(path)
             copy["steps"].append(neighbour)
             copy["total"] += distance
             self._paths.append(copy)
@@ -65,7 +65,7 @@ class Pathfinder():
 
 
     @staticmethod
-    def __copy_path(path: Path) -> Path:
+    def _copy_path(path: Path) -> Path:
         """Makes a copy of the given path"""
         copy: Path = Path(total=path["total"], steps=[])
 
