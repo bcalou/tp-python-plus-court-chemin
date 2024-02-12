@@ -51,8 +51,8 @@ class Pathfinder:
 
     def get_shortest_path(self, start: City, end: City) -> Path:
         """
-            Calculate the shortest path from start to the end based on the graph
-            of the instance.
+            Calculate the shortest path from start to the end based on the
+            graph of the instance.
         """
 
         self.__reset()
@@ -79,39 +79,46 @@ class Pathfinder:
         """
 
         nodes_to_sort: list[Node] = []
-        city_node: Node = self.__get_node(city_to_travel)
+        city_distance: int = self.__get_node(city_to_travel).get_distance()
 
         # for each city neighbours from the city to travel
-        for i in self.__inner_graph[city_to_travel].keys():
+        for neighbour in self.__inner_graph[city_to_travel].keys():
 
-            next_city_node: Node = self.__get_node(i)
+            neighbour_node: Node = self.__get_node(neighbour)
+            vertex_dist: int = self.__inner_graph[city_to_travel][neighbour]
 
-            new_distance: float = (city_node.get_distance() +
-                                   self.__inner_graph[city_to_travel][i])
+            new_distance: int = city_distance + vertex_dist
 
             # Replace distance if it's smaller than the stored one
-            if next_city_node.get_distance() > new_distance:
+            if neighbour_node.get_distance() > new_distance:
 
-                next_city_node.set_distance(new_distance)
-                next_city_node.set_previous_node(city_to_travel)
+                neighbour_node.set_distance(new_distance)
+                neighbour_node.set_previous_node(city_to_travel)
 
-            nodes_to_sort.append(next_city_node)
+            nodes_to_sort.append(neighbour_node)
 
-        # Sort neighbours nodes based on distance
-        sorted_nodes: list[Node] = self.__sort(nodes_to_sort)
+        # Update array of next nodes to compute
+        self.__update_cities_to_travel(nodes_to_sort)
 
-        # Tell which one to travel next if not already planned
-        for i in sorted_nodes:
+    def __update_cities_to_travel(self, neighbours: list[Node]) -> None:
+        """
+            Sort neighbours based on distance and schedule the cities
+            to travel next if not already planned
+        """
 
-            city: City = i.get_city()
+        sorted_neighbours: list[Node] = self.__sort(neighbours)
 
-            if city not in self.__travelled_cities:
-                self.__cities_to_travel.append(city)
+        for neighbour in sorted_neighbours:
+
+            neighbour_city: City = neighbour.get_city()
+
+            if neighbour_city not in self.__travelled_cities:
+                self.__cities_to_travel.append(neighbour_city)
 
     def __sort(self, nodes: list[Node]) -> list[Node]:
         """
-            Used in travel_city() to tell the entire programm 
-            wich city to check next
+            Used in travel_city() to tell the entire programm
+            wich city to check next (fusion sort)
         """
 
         if len(nodes) <= 1:
