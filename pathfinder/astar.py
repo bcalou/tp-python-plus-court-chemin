@@ -11,11 +11,12 @@ class AStar(Pathfinder):
         super().__init__(graph)
         self.__heuristics = heuristics
 
-    def find_next_city(self, current_city, paths, visited):
+    def find_next_city(self, current_city: City, paths: dict[City, Path],
+                       visited_cities: list[City]):
         # Find the next city to visit
         min_distance = float('inf')
         for city, path in paths.items():
-            if (city not in visited and
+            if (city not in visited_cities and
                     min_distance > path["total"] + self.__heuristics[city]):
                 min_distance = path["total"] + self.__heuristics[city]
                 current_city = city
