@@ -17,6 +17,8 @@ class Pathfinder:
     # Stocke les distances des villes par rapport au départ du chemin
     distance_to_cities: dict[City, float]
 
+    distance_calculations: int = 0
+
     def __init__(self, graph: Graph) -> None:
         self.graph = graph
 
@@ -90,7 +92,7 @@ class Pathfinder:
             result_path.append(previous_city[city])
         result_path = list(reversed(result_path))
 
-        print(self.distance_to_cities)
+        print(f"Distances mise à jour {self.distance_calculations} fois.")
 
         return Path(total=real_distance, steps=result_path)
 
@@ -109,6 +111,9 @@ class Pathfinder:
 
         `distance` est la distance
         """
+
+        self.distance_calculations += 1
+
         self.distance_to_cities[city] = distance
 
     def find_distance_to_city(self, city: City, previous: City) -> float:
