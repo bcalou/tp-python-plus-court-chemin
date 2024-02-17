@@ -21,11 +21,13 @@ class SPFA(Pathfinder):
             for city, distances in self.graph.items():
                 for next_city, distance in distances.items():
                     potential_distance: float = paths[city]["total"] + distance
-                    # change the path if the new path is shorter
-                    if paths[next_city]["total"] > potential_distance:
-                        paths[next_city]["total"] = potential_distance
-                        paths[next_city]["steps"] = paths[city]["steps"] + [next_city]
-                        modified = True
+                    if paths[next_city]["total"] <= potential_distance:
+                        continue
+                    # change the path only if the new path is shorter
+                    paths[next_city]["total"] = potential_distance
+                    paths[next_city]["steps"] = paths[city]["steps"] + [
+                        next_city]
+                    modified = True
             i += 1
 
         return paths[end]

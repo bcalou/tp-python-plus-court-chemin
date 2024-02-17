@@ -12,9 +12,9 @@ class AStar(Pathfinder):
         self.__heuristics = heuristics
 
     def find_next_city(self, current_city: City, paths: dict[City, Path],
-                       visited_cities: list[City]):
+                       visited_cities: list[City]) -> City:
         # Find the next city to visit
-        min_distance = float('inf')
+        min_distance: float = float('inf')
         for city, path in paths.items():
             if (city not in visited_cities and
                     min_distance > path["total"] + self.__heuristics[city]):
@@ -22,5 +22,6 @@ class AStar(Pathfinder):
                 current_city = city
         return current_city
 
-    def is_loop_ended(self, current_city, end, paths: dict[City, Path]):
+    def is_loop_ended(self, current_city, end,
+                      paths: dict[City, Path]) -> bool:
         return paths.__contains__(end)

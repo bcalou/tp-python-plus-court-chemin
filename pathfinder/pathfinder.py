@@ -8,7 +8,9 @@ class Pathfinder:
         self.graph = graph
 
     def get_shortest_path(self, start: City, end: City) -> Path:
-        """Returns the shortest path between two cities using Dijkstra's algorithm"""
+        """
+        Returns the shortest path between two cities using Dijkstra's algorithm
+        """
         paths: dict[City, Path] = {start: {"total": 0, "steps": [start]}}
         visited_cities: list[City] = []
         current_city: City = start
@@ -27,7 +29,8 @@ class Pathfinder:
 
             visited_cities.append(current_city)
 
-            current_city = self.find_next_city(current_city, paths, visited_cities)
+            current_city = (
+                self.find_next_city(current_city, paths, visited_cities))
 
         return paths[end]
 
