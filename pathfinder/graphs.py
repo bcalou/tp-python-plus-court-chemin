@@ -74,3 +74,4 @@ graph: Graph = {
         City.ROUEN: 11
     }
 }
+
