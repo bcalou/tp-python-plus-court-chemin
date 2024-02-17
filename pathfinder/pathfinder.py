@@ -30,7 +30,6 @@ class Pathfinder:
         visited_cities: list[City] = []
         cities_to_visit: list[City] = [start]
 
-        # Ces deux dictionnaire fonctionnent ensemble
         # distance_to_cities permet de connaitre la distance
         # d'une ville à `start` en fonction d'un chemin
         self.distance_to_cities = {start: 0}
@@ -83,13 +82,17 @@ class Pathfinder:
 
         # On parcours le chemin à l'envert
         result_path: list[City] = [end]
+        real_distance: float = 0
         for city in result_path:
             if city == start:
                 break
+            real_distance += self.graph[previous_city[city]][city]
             result_path.append(previous_city[city])
         result_path = list(reversed(result_path))
 
-        return Path(total=self.distance_to_city(end), steps=result_path)
+        print(self.distance_to_cities)
+
+        return Path(total=real_distance, steps=result_path)
 
     def distance_to_city(self, city: City) -> float:
         """
