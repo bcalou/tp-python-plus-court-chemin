@@ -154,6 +154,8 @@ Combien de calculs de distance avez-vous effectué pour parvenir au résultat Bo
 
 Autrement dit, combien de fois avez vous mis à jour la distance pour un point du graphe ?
 
+Sur le trajet Bordeaux - Strasbourg, la distance aux villes est mise à jour 12 fois.
+
 ## Partie 2 : Amélioration avec l'algorithme A* (a-star)
 
 Dijkstra garantit la meilleure solution possible. Mais vous avez sans doute remarqué qu'il s'aventure dans des recoins peu pertinents d'un point de vue "intelligent" (par exemple, tester Rouen dans un trajet Bordeaux -> Strasbourg...).

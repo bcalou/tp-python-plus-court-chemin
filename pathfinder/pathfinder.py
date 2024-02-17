@@ -22,6 +22,9 @@ class Pathfinder:
         visited_cities: list[City] = []
         cities_to_visit: list[City] = [start]
 
+        # Compte le nombre de màj des distances
+        stats: int = 0
+
         # Ces deux dictionnaire fonctionnent ensemble
         # distance_to_cities permet de connaitre la distance
         # d'une ville à `start` en fonction d'un chemin
@@ -52,6 +55,7 @@ class Pathfinder:
                 # chemin est plus court, on màj distance&previous
                 if (neighbour not in distance_to_cities
                    or distance_to_cities[neighbour] > current_distance):
+                    stats += 1
                     distance_to_cities[neighbour] = current_distance
                     previous_city[neighbour] = current_city
 
@@ -78,5 +82,7 @@ class Pathfinder:
                 break
             result_path.append(previous_city[city])
         result_path = list(reversed(result_path))
+
+        print(f"Nombre de mise à jour des distances: {stats}")
 
         return Path(total=distance_to_cities[end], steps=result_path)
