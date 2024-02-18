@@ -27,7 +27,8 @@ class AStar(Pathfinder):
             shortest_path = known_city if actual_shortest_with_heuristics > \
                 city_with_heuristics else shortest_path
 
-        # A star must stop when end is discovered and not visited
+        # A star must stop when end is discovered and not processed
+        # TODO: change _can_continue_research instead
         if self._end in self._discovered_cities:
             for step in self._discovered_steps:
                 if step["city"] == self._end:
@@ -37,3 +38,9 @@ class AStar(Pathfinder):
                     self._processed_steps.append(step)
 
         return shortest_path
+
+    # Ce code ne fait pas ce qui est souhaité ?
+    # def _can_continue_research(self) -> bool:
+        # """Express the condition to continue explore new cities.
+        # Here, the end city must not be discovered"""
+        # return self._end not in self._discovered_cities

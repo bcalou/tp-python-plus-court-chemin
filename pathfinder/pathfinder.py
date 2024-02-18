@@ -9,37 +9,38 @@ class Pathfinder():
     _processed_cities: list[City] = []
     _discovered_steps: list[Step] = []
     _discovered_cities: list[City] = []
-    __start: City
+    _start: City
     _end: City
     _current_step: Step
 
     def __init__(self, graph: Graph):
-        self.__graph = graph
+        self._graph = graph
 
     def get_shortest_path(self, start: City, end: City) -> Path:
         """Return the path with the min cost to go from start to end point"""
-        self.__start = start
+        self._start = start
         self._current_step = {
-            "city": self.__start,
+            "city": self._start,
             "origin": None,
             "bestCost": 0
         }
         self._end = end
 
-        self._discovered_cities.append(self.__start)
+        self._discovered_cities.append(self._start)
         self._discovered_steps.append(self._current_step)
 
-        while self._end not in self._processed_cities:
-            self.__find_next_step()
+        while self._can_continue_research():
+            print(self._current_step["city"])
+            self._find_next_step()
 
-        path: Path = self.__get_path_from_steps()
-        self.__reset()
+        path: Path = self._get_path_from_steps()
+        self._reset()
         return path
 
-    def __find_next_step(self) -> None:
+    def _find_next_step(self) -> None:
         """Discover cities around the actual one and compare
         discovered cities' cost. The lowest is the next city to visit"""
-        self.__visit_neighbourhood()
+        self._visit_neighbourhood()
 
         # Change the current city from discovered to processed
         self._discovered_cities.remove(self._current_step["city"])
@@ -49,14 +50,14 @@ class Pathfinder():
 
         self._current_step = self._lowest_cost_in_discoverd_cities()
 
-    def __visit_neighbourhood(self) -> None:
+    def _visit_neighbourhood(self) -> None:
         """Create or update infos about cities around the current one"""
-        for city in self.__graph[self._current_step["city"]]:
+        for city in self._graph[self._current_step["city"]]:
             # Ignore the city if it's already processed
             if city in self._processed_cities:
                 continue
 
-            cost: float = self.__graph[self._current_step["city"]][city]\
+            cost: float = self._graph[self._current_step["city"]][city]\
                 + self._current_step["bestCost"]
 
             # Update origin and cost if it's lower than the previous one
@@ -92,7 +93,7 @@ class Pathfinder():
 
         return shortest_path
 
-    def __get_path_from_steps(self) -> Path:
+    def _get_path_from_steps(self) -> Path:
         """Recreate the path going from end to start"""
         total_cost: float = float("inf")
         cities_on_path: list[City] = [self._end]
@@ -101,15 +102,20 @@ class Pathfinder():
             if step["city"] == self._end:
                 total_cost = step["bestCost"]
                 origin: Step | None = step["origin"]
-                while origin is not None and origin["city"] != self.__start:
+                while origin is not None and origin["city"] != self._start:
                     cities_on_path.insert(0, origin["city"])
                     origin = origin["origin"]
-                cities_on_path.insert(0, self.__start)
+                cities_on_path.insert(0, self._start)
 
         path: Path = {"total": total_cost, "steps": cities_on_path}
         return path
 
-    def __reset(self) -> None:
+    def _can_continue_research(self) -> bool:
+        """Express the condition to continue explore new cities.
+        Here, the end city must not be processed"""
+        return self._end not in self._processed_cities
+
+    def _reset(self) -> None:
         """Clean lists used to explore the graph"""
         self._processed_steps = []
         self._processed_cities = []
