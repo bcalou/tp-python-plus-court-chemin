@@ -42,7 +42,7 @@ class City(Enum):
     BORDEAUX = "Bordeaux"
     DIJON = "Dijon"
     LILLE = "Lille"
-    ...
+    ...s
 ```
 
 Maintenant, vous pouvez utiliser des variables du type `City.BORDEAUX`, qui "représente" la string `"Bordeaux"` est qui est de type `City`.
@@ -140,13 +140,13 @@ Combien de calculs de distance avez-vous effectué pour parvenir au résultat Bo
 
 Autrement dit, combien de fois avez vous mis à jour la distance pour un point du graphe ?
 
-## Partie 2 : Amélioration avec l'algorithme A* (a-star)
+## Partie 2 : Amélioration avec l'algorithme A\* (a-star)
 
 Dijkstra garantit la meilleure solution possible. Mais vous avez sans doute remarqué qu'il s'aventure dans des recoins peu pertinents d'un point de vue "intelligent" (par exemple, tester Rouen dans un trajet Bordeaux -> Strasbourg...).
 
 Or, il est parfois indispensable d'aller vite, quitte à trouver une solution "presque" optimale : c'est par exemple le cas du jeu vidéo.
 
-Pour cela, l'algorithme A* (a star) propose d'associer une valeur heuristique à chaque sommet du graphe. C'est ce que vous pouvez voir ici en vert :
+Pour cela, l'algorithme A\* (a star) propose d'associer une valeur heuristique à chaque sommet du graphe. C'est ce que vous pouvez voir ici en vert :
 
 <img src="img/a-star.png">
 
@@ -158,7 +158,7 @@ La valeur est le temps qu'il faudrait à un cycliste pédalant à 16km/h pour pa
 
 En utilisant ces heuristiques, résolvez "manuellement" (sur une feuille ou un document texte) le trajet Bordeaux -> Strasbourg.
 
-**Important** : l'algorithme s'arrête dès qu'une solution est trouvée. Ce n'est pas nécessairement la meilleure, mais *souvent* l'une des meilleures.
+**Important** : l'algorithme s'arrête dès qu'une solution est trouvée. Ce n'est pas nécessairement la meilleure, mais _souvent_ l'une des meilleures.
 
 ### 2.b Implémentation
 
@@ -238,7 +238,7 @@ Utilisez l'algorithme de Dijkstra pour résoudre le problème. Qu'observez-vous 
 
 ### 3.c Algorithme SPFA
 
-L'algorithme SPFA (*Shortest Path Faster Algorithm*, nom peu inspiré), est une variation de l'algorithme de Bellman-Ford, que nous ne verrons pas ici mais qui est très répandu.
+L'algorithme SPFA (_Shortest Path Faster Algorithm_, nom peu inspiré), est une variation de l'algorithme de Bellman-Ford, que nous ne verrons pas ici mais qui est très répandu.
 
 SPFA permet de trouver le meilleur chemin dans un graphe dont les arcs peuvent être de poids négatif, à condition qu'il n'y ait pas de **circuit absorbant**, c'est à dire de circuit "magique" qui permette de tendre vers moins l'infini. Vous pouvez le vérifier sur la carte, il n'y a pas d'astuce pour se faire de l'argent à l'infini.
 
