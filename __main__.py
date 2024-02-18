@@ -5,5 +5,5 @@ from pathfinder.types import Path
 
 pathfinder = Pathfinder(graph)
 
-pathBT: Path = pathfinder.get_shortest_path(City.STRASBOURG, City.BORDEAUX)
+pathBT: Path = pathfinder.get_shortest_path(City.LYON, City.MARSEILLE)
 print(pathBT)
