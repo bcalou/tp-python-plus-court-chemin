@@ -18,11 +18,25 @@ Toujours à la recherche de nouveaux exploits à accomplir, vous décidez de par
 
 Commencez par trouver ce qui vous semble être le plus court chemin sans technique particulière. Notez votre réponse.
 
+Je prends le chemin qui semble le plus "droit":
+
+Bordeaux -> Orléans -> Paris -> Strasbourg
+
+J'obtiens un temps de trajet de 24+7+26 = 57 heures
+
 ### 1.b Algorithme de Dijkstra
 
 Sans l'implémenter pour le moment, trouvez le plus court chemin en utilisant manuellement l'algorithme de Dijkstra.
 
 Notez chaque étape de votre raisonnement sur une feuille ou un document texte pour bien vous familiariser avec l'algorithme.
+
+En suivant l'lgorithme de dijkstra on trouve 3 solutions:
+
+Bordeaux - Orléans - Paris - Starsbourg 57 heures
+
+Bordeaux - Orléans - Dijon - Strasbourg 59 heures
+
+Bordeaux - Orléans - Paris - Lille - Strasbourg 73 heures
 
 Comparez avec votre réponse précédente.
 
@@ -140,6 +154,8 @@ Combien de calculs de distance avez-vous effectué pour parvenir au résultat Bo
 
 Autrement dit, combien de fois avez vous mis à jour la distance pour un point du graphe ?
 
+Sur le trajet Bordeaux - Strasbourg, la distance aux villes est mise à jour 12 fois.
+
 ## Partie 2 : Amélioration avec l'algorithme A* (a-star)
 
 Dijkstra garantit la meilleure solution possible. Mais vous avez sans doute remarqué qu'il s'aventure dans des recoins peu pertinents d'un point de vue "intelligent" (par exemple, tester Rouen dans un trajet Bordeaux -> Strasbourg...).
@@ -232,9 +248,13 @@ Mais il y a aussi des valeurs en vert : des gens très seuls et très riches, qu
 
 Saurez-vous trouver le meilleur trajet de tête ? Probablement.
 
+Bordeaux -> Nantes -> Rouen -> Paris -> Orléans -> Strasbourg Total: 15
+
 ### 3.b Est-ce que Dijkstra fonctionne ?
 
 Utilisez l'algorithme de Dijkstra pour résoudre le problème. Qu'observez-vous ?
+
+Dijkstra va prendre le chemin le plus court mais pas le chemin le moins cher.
 
 ### 3.c Algorithme SPFA
 
