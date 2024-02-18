@@ -14,13 +14,57 @@ class Pathfinder:
     # Stocke le graphe des villes
     graph: Graph
 
-    # Stocke les distances des villes par rapport au départ du chemin
-    distance_to_cities: dict[City, float]
+    visited_cities: list[City] = []
+    cities_to_visit: list[City] = []
+
+    # distance_to_cities permet de connaitre la distance
+    # d'une ville à `start` en fonction d'un chemin
+    distance_to_cities = {}
+    # previous_city stock ce chemin
+    previous_cities: dict[City, City] = {}
+
+    # Stocke le chemin et son cout
+    result_path: list[City] = []
+    real_distance: float = 0
+
+    # Stocke la ville précédente.
+    previous_city: City
 
     distance_calculations: int = 0
 
     def __init__(self, graph: Graph) -> None:
         self.graph = graph
+
+    def setup_variables(self, start: City, end: City) -> None:
+        """
+        Permet de préparer les variables et les listes utiliser pour la
+        résolution de l'algorithme.
+        """
+        self.visited_cities: list[City] = []
+        self.cities_to_visit: list[City] = [start]
+        self.distance_to_cities = {start: 0}
+        self.previous_cities: dict[City, City] = {}
+        self.result_path: list[City] = [end]
+        self.real_distance: float = 0
+        self.previous_city: City = start
+        self.distance_calculations = 0
+
+    def early_break(self, current_city: City, end: City) -> bool:
+        """
+        Cette fonction permet de quitter en avance la boucle pour les
+        algorythmes compatibles.
+
+        Cette version est compatible avec Dijkstra et A*.
+        """
+        # Si cette condition est vraie alors la ville
+        # la plus proche est la ville d'arrivé.
+        # Il n'y a pas d'autre chemin plus court possible.
+        return current_city == end
+
+    def visited_city(self, city: City) -> None:
+        """Permet d'indiquer si une ville a été visité"""
+        self.visited_cities.append(city)
+        self.cities_to_visit.remove(city)
 
     def get_shortest_path(self, start: City, end: City) -> Path:
         """
@@ -29,25 +73,17 @@ class Pathfinder:
         La fonction considère que la ville d'arrivé est présente et accéssible
         dans le `graph` passé à la création de l'objet Pathfinder.
         """
-        visited_cities: list[City] = []
-        cities_to_visit: list[City] = [start]
-
-        # distance_to_cities permet de connaitre la distance
-        # d'une ville à `start` en fonction d'un chemin
-        self.distance_to_cities = {start: 0}
-        # previous_city stock ce chemin
-        previous_city: dict[City, City] = {}
+        self.setup_variables(start, end)
 
         # Dijkstra continue tant qu'il reste des villes à visiter
-        while len(cities_to_visit) != 0:
+        while len(self.cities_to_visit) != 0:
             # cities_to_visit est trié dans l'ordre croissant des distances
             # Ici on prends la ville la plus proche
-            current_city: City = cities_to_visit[0]
+            current_city: City = self.cities_to_visit[0]
 
-            if current_city == end:
-                # Si cette condition est vraie alors la ville
-                # la plus proche est la ville d'arrivé.
-                # Il n'y a pas d'autre chemin plus court possible.
+            # TODO ASTAR Quitter dès que strasbourg visible
+
+            if self.early_break(current_city, end):
                 break
 
             neighbours: dict[City, float] = self.graph.get(current_city)
@@ -64,37 +100,48 @@ class Pathfinder:
                 if (neighbour not in self.distance_to_cities
                    or self.distance_to_city(neighbour) > neighbour_distance):
                     self.set_distance_to_city(neighbour, neighbour_distance)
-                    previous_city[neighbour] = current_city
+                    self.previous_cities[neighbour] = current_city
 
             # Ajouter les voisines aux villes à visiter
             for city in list(neighbours.keys()):
                 # Si elle n'ont pas déjà été visité / prévu d'être visité
-                if city not in visited_cities and city not in cities_to_visit:
-                    cities_to_visit.append(city)
+                if (city not in self.visited_cities and
+                    city not in self.cities_to_visit):
+                    self.cities_to_visit.append(city)
 
-            # Trie les villes à visiter en fonction de la distance à `start`
-            cities_to_visit = sorted(
-                cities_to_visit,
-                key=self.distance_to_city
-            )
+
+            self.sort_cities_to_visit()
 
             # Cette ville à été visité
-            visited_cities.append(current_city)
-            cities_to_visit.remove(current_city)
+            self.visited_city(current_city)
 
-        # On parcours le chemin à l'envert
-        result_path: list[City] = [end]
-        real_distance: float = 0
-        for city in result_path:
-            if city == start:
-                break
-            real_distance += self.graph[previous_city[city]][city]
-            result_path.append(previous_city[city])
-        result_path = list(reversed(result_path))
+            self.previous_city = current_city
+
+        self.get_path(start)
 
         print(f"Distances mise à jour {self.distance_calculations} fois.")
 
-        return Path(total=real_distance, steps=result_path)
+        return Path(total=self.real_distance, steps=self.result_path)
+
+    def sort_cities_to_visit(self) -> None:
+        """
+        Trie les villes à visiter en fonction de la distance à `start`
+        """
+        self.cities_to_visit = sorted(
+            self.cities_to_visit,
+            key=self.distance_to_city
+        )
+
+    def get_path(self, start: City) -> None:
+        """
+        Trouve le chemin en partant de la fin jusqu'a la ville du début
+        """
+        for city in self.result_path:
+            if city == start:
+                break
+            self.real_distance += self.graph[self.previous_cities[city]][city]
+            self.result_path.append(self.previous_cities[city])
+        self.result_path = list(reversed(self.result_path))
 
     def distance_to_city(self, city: City) -> float:
         """

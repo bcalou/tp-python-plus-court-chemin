@@ -248,9 +248,13 @@ Mais il y a aussi des valeurs en vert : des gens très seuls et très riches, qu
 
 Saurez-vous trouver le meilleur trajet de tête ? Probablement.
 
+Bordeaux -> Nantes -> Rouen -> Paris -> Orléans -> Strasbourg Total: 15
+
 ### 3.b Est-ce que Dijkstra fonctionne ?
 
 Utilisez l'algorithme de Dijkstra pour résoudre le problème. Qu'observez-vous ?
+
+Dijkstra va prendre le chemin le plus court mais pas le chemin le moins cher.
 
 ### 3.c Algorithme SPFA
 
