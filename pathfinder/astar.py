@@ -24,8 +24,7 @@ class AStar(Pathfinder):
         city_to_travel:City = start
         i = 0
 
-        while (i < len(self._cities_to_travel) and 
-               city_to_travel != end):
+        while (city_to_travel != end):
 
             city_to_travel = self._cities_to_travel[i]
             self.__travel_city(city_to_travel)
