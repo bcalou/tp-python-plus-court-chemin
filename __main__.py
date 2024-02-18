@@ -6,10 +6,13 @@ from pathfinder.heuristics import heuristics
 from pathfinder.spfa import SPFA
 
 pathfinder = Pathfinder(graph)
-print(pathfinder.get_shortest_path(City.BORDEAUX, City.STRASBOURG))
+print("Pathfinder : ",
+      pathfinder.get_shortest_path(City.BORDEAUX, City.STRASBOURG))
 
 astar = AStar(graph, heuristics)
-print(astar.get_shortest_path(City.BORDEAUX, City.STRASBOURG))
+print("AStar : ",
+      astar.get_shortest_path(City.BORDEAUX, City.STRASBOURG))
 
 spfa = SPFA(spfa_graph)
-print(spfa.get_shortest_path(City.BORDEAUX, City.STRASBOURG))
+print("SPFA : ",
+      spfa.get_shortest_path(City.BORDEAUX, City.STRASBOURG))
