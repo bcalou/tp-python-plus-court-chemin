@@ -18,6 +18,8 @@ Toujours à la recherche de nouveaux exploits à accomplir, vous décidez de par
 
 Commencez par trouver ce qui vous semble être le plus court chemin sans technique particulière. Notez votre réponse.
 
+*A chaque noeud, on analyse chaque chemin en les additionnant au chemin parcouru jusqu'alors, si un chemin enregistreé rejoins déjà le noeud au bout de la branche analysée, on compare alors la valeur des deux chemins et on garde la plus petite, on retiendra alors cette distance entre ces deux noeuds comme la plus petite. De fil en aiguille, on va parcourir tout les noeuds et toute les possibilités de relier notre destination à notre point de départ.*
+
 ### 1.b Algorithme de Dijkstra
 
 Sans l'implémenter pour le moment, trouvez le plus court chemin en utilisant manuellement l'algorithme de Dijkstra.
@@ -36,6 +38,7 @@ Créez un fichier `pathfinder/city.py`.
 À l'intérieur, créez une [énumération](https://docs.python.org/fr/3/library/enum.html) qui vous permettra d'avoir des constantes correspondant au nom de chaque ville.
 
 Voici à quoi devrait ressembler le début de votre énumération :
+
 
 ```py
 class City(Enum):
@@ -140,6 +143,8 @@ Combien de calculs de distance avez-vous effectué pour parvenir au résultat Bo
 
 Autrement dit, combien de fois avez vous mis à jour la distance pour un point du graphe ?
 
+*La distance dans a été au total mise à jour 13 fois.*
+
 ## Partie 2 : Amélioration avec l'algorithme A* (a-star)
 
 Dijkstra garantit la meilleure solution possible. Mais vous avez sans doute remarqué qu'il s'aventure dans des recoins peu pertinents d'un point de vue "intelligent" (par exemple, tester Rouen dans un trajet Bordeaux -> Strasbourg...).
@@ -212,7 +217,10 @@ N'oubliez pas que vous pouvez, dans une méthode de `AStar`, appeler la méthode
 
 Combien de calculs de distance ont été nécessaires pour calculer la solution du trajet Bordeaux -> Strasbourg ?
 
+*Seulement quatre calculs de distance ont été nécessaires*
+
 Que pensez-vous de la solution obtenue, comparée à l'algorithme de Dijsktra ?
+*La solution obtenue est convaincante, bien qu'il y ai un risque de ne pas avoir obtenu le meilleur chemin possible du fait que l'lgorithme ne parcours pas l'ensemble des possibilités de chemins tel que le fait dijkstra. De plus, sans les données heuristiques, cet algorithme ne sert à rien*
 
 ## Partie 3 : Variation avec SPFA (Shortest Path Faster Algorithm)
 
@@ -232,9 +240,13 @@ Mais il y a aussi des valeurs en vert : des gens très seuls et très riches, qu
 
 Saurez-vous trouver le meilleur trajet de tête ? Probablement.
 
+*BORDEAUX -> NANTES -> RENNES -> ROUEN -> PARIS -> ORLEANS -> STARSBOURG*
+
 ### 3.b Est-ce que Dijkstra fonctionne ?
 
 Utilisez l'algorithme de Dijkstra pour résoudre le problème. Qu'observez-vous ?
+
+*L'algorithme de dijkstra ne fonctionne pas avec les valeurs négatives.*
 
 ### 3.c Algorithme SPFA
 

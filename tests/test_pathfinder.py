@@ -59,6 +59,7 @@ class TestPathfinder(unittest.TestCase):
         pathfinder = Pathfinder(graph)
 
         for test in tests:
+            print("test")
             result = pathfinder.get_shortest_path(test["start"], test["end"])
 
             self.assertEqual(
