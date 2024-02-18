@@ -14,7 +14,6 @@ class Pathfinder:
     # Stocke le graphe des villes
     graph: Graph
 
-    visited_cities: list[City] = []
     cities_to_visit: list[City] = []
 
     # distance_to_cities permet de connaitre la distance
@@ -40,7 +39,6 @@ class Pathfinder:
         Permet de préparer les variables et les listes utiliser pour la
         résolution de l'algorithme.
         """
-        self.visited_cities: list[City] = []
         self.cities_to_visit: list[City] = [start]
         self.result_path: list[City] = [end]
 
@@ -66,7 +64,6 @@ class Pathfinder:
 
     def visited_city(self, city: City) -> None:
         """Permet d'indiquer si une ville a été visité"""
-        self.visited_cities.append(city)
         self.cities_to_visit.remove(city)
 
     def get_shortest_path(self, start: City, end: City) -> Path:
@@ -90,13 +87,6 @@ class Pathfinder:
             neighbours: dict[City, float] = self.graph.get(current_city)
 
             self.update_neighbours_distance(current_city, neighbours)
-
-            # Ajouter les voisines aux villes à visiter
-            for city in list(neighbours.keys()):
-                # Si elle n'ont pas déjà été visité / prévu d'être visité
-                if (city not in self.visited_cities and
-                   city not in self.cities_to_visit):
-                    self.cities_to_visit.append(city)
 
             self.sort_cities_to_visit()
 
@@ -133,6 +123,10 @@ class Pathfinder:
                or self.distance_to_city(neighbour) > neighbour_distance):
                 self.set_distance_to_city(neighbour, neighbour_distance)
                 self.previous_cities[neighbour] = city
+
+                # Ajouter les voisines aux villes à visiter
+                if neighbour not in self.cities_to_visit:
+                    self.cities_to_visit.append(neighbour)
 
     def sort_cities_to_visit(self) -> None:
         """
