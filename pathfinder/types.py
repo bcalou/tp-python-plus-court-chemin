@@ -11,3 +11,8 @@ class Step(TypedDict):
     city: City
     origin: 'Step | None'
     bestCost: float
+
+
+Graph = dict[City, dict[City, float]]
+
+Heuristic = dict[City, float]
