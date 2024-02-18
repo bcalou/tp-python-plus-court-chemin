@@ -18,6 +18,8 @@ Toujours à la recherche de nouveaux exploits à accomplir, vous décidez de par
 
 Commencez par trouver ce qui vous semble être le plus court chemin sans technique particulière. Notez votre réponse.
 
+Directement Dijkstra
+
 ### 1.b Algorithme de Dijkstra
 
 Sans l'implémenter pour le moment, trouvez le plus court chemin en utilisant manuellement l'algorithme de Dijkstra.
@@ -25,6 +27,8 @@ Sans l'implémenter pour le moment, trouvez le plus court chemin en utilisant ma
 Notez chaque étape de votre raisonnement sur une feuille ou un document texte pour bien vous familiariser avec l'algorithme.
 
 Comparez avec votre réponse précédente.
+
+Bordeaux(0) -> Orléans(24) -> Paris(31) -> Strasbourg(57)
 
 ### 1.c Implémentation
 
@@ -138,7 +142,11 @@ Adaptez cette commande aux autres algorithmes pour la suite (et retirer le chemi
 
 Combien de calculs de distance avez-vous effectué pour parvenir au résultat Bordeaux -> Strasbourg ?
 
+13
+
 Autrement dit, combien de fois avez vous mis à jour la distance pour un point du graphe ?
+
+13
 
 ## Partie 2 : Amélioration avec l'algorithme A* (a-star)
 
@@ -212,7 +220,11 @@ N'oubliez pas que vous pouvez, dans une méthode de `AStar`, appeler la méthode
 
 Combien de calculs de distance ont été nécessaires pour calculer la solution du trajet Bordeaux -> Strasbourg ?
 
+5
+
 Que pensez-vous de la solution obtenue, comparée à l'algorithme de Dijsktra ?
+
+Bien plus efficace
 
 ## Partie 3 : Variation avec SPFA (Shortest Path Faster Algorithm)
 
