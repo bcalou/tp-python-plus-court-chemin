@@ -8,46 +8,46 @@ class Pathfinder:
 
     def __init__(self, graph: Graph) -> None:
 
-        self.__path: Path = {
+        self._path: Path = {
             "total": 0,
             "steps": []
         }
 
-        self.__inner_graph: Graph = graph
+        self._inner_graph: Graph = graph
 
-        self.__nodes: list[Node] = []
+        self._nodes: list[Node] = []
 
         for i in graph.keys():
-            self.__nodes.append(Node(i))
+            self._nodes.append(Node(i))
 
-        self.__travelled_cities: list[City] = []
-        self.__cities_to_travel: list[City] = []
+        self._travelled_cities: list[City] = []
+        self._cities_to_travel: list[City] = []
 
-    def __get_node(self, city: City) -> Node:
+    def _get_node(self, city: City) -> Node:
         """
             Return the desired node from the graph based on the city
         """
 
-        for i in self.__nodes:
+        for i in self._nodes:
             if i.get_city() == city:
                 return i
 
-    def __reset(self) -> None:
+    def _reset(self) -> None:
         """
             Reset the instance parameters to compute a new path
         """
 
-        self.__path = {
+        self._path = {
             "total": 0,
             "steps": []
         }
 
-        self.__travelled_cities = []
-        self.__cities_to_travel = []
+        self._travelled_cities = []
+        self._cities_to_travel = []
 
-        for node in self.__nodes:
+        for node in self._nodes:
             node.set_distance(float("inf"))
-            node.set_previous_node(node.get_city())
+            node.set_previous_city(node.get_city())
 
     def get_shortest_path(self, start: City, end: City) -> Path:
         """
@@ -55,37 +55,37 @@ class Pathfinder:
             graph of the instance.
         """
 
-        self.__reset()
+        self._reset()
 
-        self.__cities_to_travel.append(start)
+        self._cities_to_travel.append(start)
 
-        self.__get_node(start).set_distance(0)
+        self._get_node(start).set_distance(0)
 
         i = 0
 
-        while i < len(self.__cities_to_travel):
+        while i < len(self._cities_to_travel):
 
-            city_to_travel: City = self.__cities_to_travel[i]
+            city_to_travel: City = self._cities_to_travel[i]
 
-            self.__travel_city(city_to_travel)
-            self.__travelled_cities.append(city_to_travel)
+            self._travel_city(city_to_travel)
+            self._travelled_cities.append(city_to_travel)
             i += 1
 
-        return self.__reconstitute_path(start, end)
+        return self._reconstitute_path(start, end)
 
-    def __travel_city(self, city_to_travel: City) -> None:
+    def _travel_city(self, city_to_travel: City) -> None:
         """
             Check each vertex of the city given and update his neighbours
         """
 
         nodes_to_sort: list[Node] = []
-        city_distance: int = self.__get_node(city_to_travel).get_distance()
+        city_distance: int = self._get_node(city_to_travel).get_distance()
 
         # for each city neighbours from the city to travel
-        for neighbour in self.__inner_graph[city_to_travel].keys():
+        for neighbour in self._inner_graph[city_to_travel].keys():
 
-            neighbour_node: Node = self.__get_node(neighbour)
-            vertex_dist: int = self.__inner_graph[city_to_travel][neighbour]
+            neighbour_node: Node = self._get_node(neighbour)
+            vertex_dist: int = self._inner_graph[city_to_travel][neighbour]
 
             new_distance: int = city_distance + vertex_dist
 
@@ -93,7 +93,7 @@ class Pathfinder:
             if neighbour_node.get_distance() > new_distance:
 
                 neighbour_node.set_distance(new_distance)
-                neighbour_node.set_previous_node(city_to_travel)
+                neighbour_node.set_previous_city(city_to_travel)
 
             nodes_to_sort.append(neighbour_node)
 
@@ -105,7 +105,7 @@ class Pathfinder:
             Sort neighbours based on distance and schedule the cities
             to travel next if not already planned
         """
-
+        
         sorted_neighbours: list[Node] = self.__sort(neighbours)
 
         for neighbour in sorted_neighbours:
@@ -165,7 +165,7 @@ class Pathfinder:
 
         return sorted_array
 
-    def __reconstitute_path(self, start: City, end: City) -> Path:
+    def _reconstitute_path(self, start: City, end: City) -> Path:
         """
             Create an array of steps of the shortest path to take
         """
@@ -175,13 +175,13 @@ class Pathfinder:
 
         while step != start:
             steps.append(step)
-            step = self.__get_node(step).get_previous_node()
+            step = self._get_node(step).get_previous_city()
 
         steps.append(start)
         steps.reverse()
 
-        self.__path["steps"] = steps
+        self._path["steps"] = steps
 
-        self.__path["total"] = self.__get_node(end).get_distance()
+        self._path["total"] = self._get_node(end).get_distance()
 
-        return self.__path
+        return self._path
