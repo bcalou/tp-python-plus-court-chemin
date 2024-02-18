@@ -66,7 +66,9 @@ class SPFA (Pathfinder):
         Applique l'algorithme de SPFA (?*)
 
         # * -> Je n'ai pas très bien compris l'algorithme SPFA, alors
-        # j'ai fais un algorithme (très) naïf mais qui fonctionne.
+        # j'ai tenté de développer l'algorithme avec une nouvelle
+        # fonction, je ne sais pas qi il corresponds à 100% mais
+        # il fonctionne.
 
         La fonction considère que la ville d'arrivé est présente et accéssible
         dans le `graph` passé à la création de l'objet Pathfinder.
