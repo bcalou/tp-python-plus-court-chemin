@@ -18,6 +18,9 @@ Toujours à la recherche de nouveaux exploits à accomplir, vous décidez de par
 
 Commencez par trouver ce qui vous semble être le plus court chemin sans technique particulière. Notez votre réponse.
 
+Bordeaux -> Orléans -> Paris -> Strasbourg
+57
+
 ### 1.b Algorithme de Dijkstra
 
 Sans l'implémenter pour le moment, trouvez le plus court chemin en utilisant manuellement l'algorithme de Dijkstra.
@@ -231,6 +234,9 @@ Mais il y a aussi des valeurs en vert : des gens très seuls et très riches, qu
 ### 3.a Résolution manuelle
 
 Saurez-vous trouver le meilleur trajet de tête ? Probablement.
+
+Bordeaux -> Nantes -> Rennes -> Rouen -> Paris -> Orleans -> Strasbourg
+15
 
 ### 3.b Est-ce que Dijkstra fonctionne ?
 
