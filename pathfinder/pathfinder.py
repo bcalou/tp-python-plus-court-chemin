@@ -30,7 +30,6 @@ class Pathfinder():
         self._discovered_steps.append(self._current_step)
 
         while self._can_continue_research():
-            print(self._current_step["city"])
             self._find_next_step()
 
         path: Path = self._get_path_from_steps()

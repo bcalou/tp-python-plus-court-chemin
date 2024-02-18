@@ -95,9 +95,9 @@ spfa_graph: Graph = {
         City.RENNES: 20
     },
     City.PARIS: {
-        City.LILLE: 50,
         City.STRASBOURG: -10,
-        City.ORLEANS: -30
+        City.ORLEANS: -30,
+        City.LILLE: 50
     },
     City.RENNES: {
         City.ROUEN: 10,
@@ -110,8 +110,8 @@ spfa_graph: Graph = {
         City.LILLE: 50
     },
     City.TOULOUSE: {
-        City.MARSEILLE: 40,
-        City.LYON: -75
+        City.LYON: -75,
+        City.MARSEILLE: 40
     },
     City.ORLEANS: {
         City.PARIS: 40,
