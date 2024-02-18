@@ -18,6 +18,8 @@ Toujours à la recherche de nouveaux exploits à accomplir, vous décidez de par
 
 Commencez par trouver ce qui vous semble être le plus court chemin sans technique particulière. Notez votre réponse.
 
+<span style="color:lightgreen">Le chemin le plus court semble être Bordeaux -> Orléans -> Paris -> Strasbourg avec une durée de 57h.</span>
+
 ### 1.b Algorithme de Dijkstra
 
 Sans l'implémenter pour le moment, trouvez le plus court chemin en utilisant manuellement l'algorithme de Dijkstra.
@@ -25,6 +27,8 @@ Sans l'implémenter pour le moment, trouvez le plus court chemin en utilisant ma
 Notez chaque étape de votre raisonnement sur une feuille ou un document texte pour bien vous familiariser avec l'algorithme.
 
 Comparez avec votre réponse précédente.
+
+<span style="color:lightgreen">Dijkstra me donne la même réponse de 57h pour aller à Strasbourg.</span>
 
 ### 1.c Implémentation
 
@@ -232,9 +236,13 @@ Mais il y a aussi des valeurs en vert : des gens très seuls et très riches, qu
 
 Saurez-vous trouver le meilleur trajet de tête ? Probablement.
 
+<span style="color:lightgreen">On peut trouver 20€ avec Bordeaux -> Nantes -> Rennes -> Rouen -> Paris -> Strasbourg</span>
+
 ### 3.b Est-ce que Dijkstra fonctionne ?
 
 Utilisez l'algorithme de Dijkstra pour résoudre le problème. Qu'observez-vous ?
+
+<span style="color:lightgreen">Dikjstra trouve 25€, sauf qu'il est possible de faire moins.</span>
 
 ### 3.c Algorithme SPFA
 
@@ -243,6 +251,8 @@ L'algorithme SPFA (*Shortest Path Faster Algorithm*, nom peu inspiré), est une 
 SPFA permet de trouver le meilleur chemin dans un graphe dont les arcs peuvent être de poids négatif, à condition qu'il n'y ait pas de **circuit absorbant**, c'est à dire de circuit "magique" qui permette de tendre vers moins l'infini. Vous pouvez le vérifier sur la carte, il n'y a pas d'astuce pour se faire de l'argent à l'infini.
 
 Utilisez l'algorithme à la main (papier ou document texte) pour résoudre le trajet Bordeaux -> Strasbourg. Comparez à votre première résolution.
+
+<span style="color:lightgreen">On trouve 15€ par Nantes -> Rennes -> Rouen -> Paris -> Orléans -> Strasbourg</span>
 
 ### 3.d Implémentation
 
