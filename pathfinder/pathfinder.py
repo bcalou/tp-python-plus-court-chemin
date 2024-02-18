@@ -91,7 +91,6 @@ class Pathfinder:
 
             # Replace distance if it's smaller than the stored one
             if neighbour_node.get_distance() > new_distance:
-
                 neighbour_node.set_distance(new_distance)
                 neighbour_node.set_previous_city(city_to_travel)
 
@@ -112,8 +111,8 @@ class Pathfinder:
 
             neighbour_city: City = neighbour.get_city()
 
-            if neighbour_city not in self.__travelled_cities:
-                self.__cities_to_travel.append(neighbour_city)
+            if neighbour_city not in self._travelled_cities:
+                self._cities_to_travel.append(neighbour_city)
 
     def __sort(self, nodes: list[Node]) -> list[Node]:
         """

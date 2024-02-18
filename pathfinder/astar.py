@@ -14,7 +14,7 @@ class AStar(Pathfinder):
         self._inner_heuristics: Heuristics = heuristics
 
     def get_shortest_path(self, start: City, end: City) -> Path:
-        
+
         self._reset()
 
         self._cities_to_travel.append(start)

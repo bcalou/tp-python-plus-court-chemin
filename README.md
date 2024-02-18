@@ -143,7 +143,7 @@ Combien de calculs de distance avez-vous effectué pour parvenir au résultat Bo
 
 Autrement dit, combien de fois avez vous mis à jour la distance pour un point du graphe ?
 
-*La distance pour un point du graphe a été mise à jour une fois.*
+*La distance dans a été au total mise à jour 13 fois.*
 
 ## Partie 2 : Amélioration avec l'algorithme A* (a-star)
 
@@ -217,7 +217,10 @@ N'oubliez pas que vous pouvez, dans une méthode de `AStar`, appeler la méthode
 
 Combien de calculs de distance ont été nécessaires pour calculer la solution du trajet Bordeaux -> Strasbourg ?
 
+*Seulement quatre calculs de distance ont été nécessaires*
+
 Que pensez-vous de la solution obtenue, comparée à l'algorithme de Dijsktra ?
+*La solution obtenue est convaincante, bien qu'il y ai un risque de ne pas avoir obtenu le meilleur chemin possible du fait que l'lgorithme ne parcours pas l'ensemble des possibilités de chemins tel que le fait dijkstra. De plus, sans les données heuristiques, cet algorithme ne sert à rien*
 
 ## Partie 3 : Variation avec SPFA (Shortest Path Faster Algorithm)
 

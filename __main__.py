@@ -9,6 +9,6 @@ def main():
     pathfinder: Pathfinder = Pathfinder(graph)
     astar: AStar = AStar(graph, heuristics)
 
-    print(astar.get_shortest_path(City.LILLE, City.STRASBOURG))
+    print(astar.get_shortest_path(City.BORDEAUX, City.STRASBOURG))
 
 main()
