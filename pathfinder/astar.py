@@ -19,6 +19,21 @@ class AStar (Pathfinder):
         super().__init__(graph)
         self.heuristics = heuristic
 
+    def early_break(self, current_city: City, end: City) -> bool:
+        # La version de Dijkstra est toujours vrai pour A*
+        if super().early_break(current_city, end):
+            return True
+
+        # Mais on peut aller un peu plus loin, si la ville actuelle voit
+        # la ville d'arrivé, alors on peut directement ignorer tout les
+        # autres chemins
+        neighbours: list[City] = list(self.graph.get(current_city).keys())
+        if end in neighbours:
+            self.previous_cities[end] = current_city
+            return True
+
+        return False
+
     def find_distance_to_city(self, city: City, previous: City) -> float:
         """
         Permet de connaître la distance d'une ville par rapport au départ

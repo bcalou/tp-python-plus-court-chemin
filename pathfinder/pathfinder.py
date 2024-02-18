@@ -42,12 +42,15 @@ class Pathfinder:
         """
         self.visited_cities: list[City] = []
         self.cities_to_visit: list[City] = [start]
-        self.distance_to_cities = {start: 0}
-        self.previous_cities: dict[City, City] = {}
         self.result_path: list[City] = [end]
-        self.real_distance: float = 0
+
+        self.previous_cities: dict[City, City] = {}
+        self.distance_to_cities = {start: 0}
+
         self.previous_city: City = start
-        self.distance_calculations = 0
+
+        self.real_distance: float = 0
+        self.distance_calculations: int = 0
 
     def early_break(self, current_city: City, end: City) -> bool:
         """
@@ -81,34 +84,19 @@ class Pathfinder:
             # Ici on prends la ville la plus proche
             current_city: City = self.cities_to_visit[0]
 
-            # TODO ASTAR Quitter dès que strasbourg visible
-
             if self.early_break(current_city, end):
                 break
 
             neighbours: dict[City, float] = self.graph.get(current_city)
 
-            for neighbour in list(neighbours.keys()):
-                # Calcule la distance de la ville par rapport à `start`
-                neighbour_distance: float = self.find_distance_to_city(
-                    neighbour,
-                    current_city
-                )
-
-                # Si la voisine n'est pas répertorier, ou si ce nouveau
-                # chemin est plus court, on màj distance&previous
-                if (neighbour not in self.distance_to_cities
-                   or self.distance_to_city(neighbour) > neighbour_distance):
-                    self.set_distance_to_city(neighbour, neighbour_distance)
-                    self.previous_cities[neighbour] = current_city
+            self.update_neighbours_distance(current_city, neighbours)
 
             # Ajouter les voisines aux villes à visiter
             for city in list(neighbours.keys()):
                 # Si elle n'ont pas déjà été visité / prévu d'être visité
                 if (city not in self.visited_cities and
-                    city not in self.cities_to_visit):
+                   city not in self.cities_to_visit):
                     self.cities_to_visit.append(city)
-
 
             self.sort_cities_to_visit()
 
@@ -117,11 +105,34 @@ class Pathfinder:
 
             self.previous_city = current_city
 
+        # Retrouve le chemin optimal
         self.get_path(start)
 
         print(f"Distances mise à jour {self.distance_calculations} fois.")
 
         return Path(total=self.real_distance, steps=self.result_path)
+
+    def update_neighbours_distance(
+        self,
+        city: City,
+        neighbours: dict[City, float]
+         ) -> None:
+        """
+        Met à jour la distance de chacun des voisins par rapport à `start`
+        """
+        for neighbour in list(neighbours.keys()):
+            # Calcule la distance de la ville par rapport à `start`
+            neighbour_distance: float = self.find_distance_to_city(
+                neighbour,
+                city
+            )
+
+            # Si la voisine n'est pas répertorier, ou si ce nouveau
+            # chemin est plus court, on màj distance&previous
+            if (neighbour not in self.distance_to_cities
+               or self.distance_to_city(neighbour) > neighbour_distance):
+                self.set_distance_to_city(neighbour, neighbour_distance)
+                self.previous_cities[neighbour] = city
 
     def sort_cities_to_visit(self) -> None:
         """
