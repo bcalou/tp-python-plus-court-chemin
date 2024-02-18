@@ -22,6 +22,6 @@ class AStar(Pathfinder):
                 current_city = city
         return current_city
 
-    def is_loop_ended(self, current_city, end,
+    def is_loop_ended(self, current_city: City, end: City,
                       paths: dict[City, Path]) -> bool:
         return paths.__contains__(end)
